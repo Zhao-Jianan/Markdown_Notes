@@ -296,7 +296,25 @@ loader.load_and_split()
 ```
 
 ### 文档转换
-#### 文档切割器和按文字分割
+#### 文档切割
+##### 原理
+- 将文档分成小的、有意义的块（句子）
+- 将小的块组合成一个更大的块，直到达到一定的大小
+- 一旦达到一定的大小，接着开始创建与下一个块重叠的部分 
+
+##### 递归字符切割 API
+RecursiveCharacterTextSplitter
+```
+from langchain.text_splitter import RecursiveCharacterTextSplitter
+```
+```
+    splitter = RecursiveCharacterTextSplitter(
+        chunk_size=50, # 切分的文本块大小
+        chunk_overlap=20, # 切分的文本块重叠大小
+        length_function=len, # 长度函数，也可以传递token
+        add_start_index=True # 是否添加开始索引
+    )
+```
 
 #### 代码文档分割器
 
@@ -306,7 +324,18 @@ loader.load_and_split()
 
 
 
-
+## agent
+### agent类型
+- ZERO_SHOT_REACT_DESCRIPTION  
+零样本增强生成型
+- CHAT_ZERO_SHOT_REACT_DESCRIPTION
+零样本增强生成型（对话）
+- CONVERSATION_REACT_DESCRIPTION
+对话增强型
+- CHAT_CONVERSATIONAL_REACT_DESCRIPTION
+- OPENAI_FUNCTIONS  
+OpenAI函数调用型
+- STRUCTURED_CHAT_ZERO_SHOT_REACT_DESCRIPTION
 
 
 
