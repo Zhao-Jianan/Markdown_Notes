@@ -3176,7 +3176,7 @@ socket_client.close()
 
 ### 基础匹配
 Python正则表达式，使用re模块，并基于re模块中三个基础方法来做正则匹配。分别是：match、search、findall
-#### re.match(匹配规则， 被匹配字符串)
+#### match(匹配规则， 被匹配字符串)
 ##### 功能
 从被匹配字符串开头进行匹配， 匹配成功返回匹配对象（包含匹配的信息），匹配不成功返回空
 ##### 示例代码
@@ -3192,16 +3192,40 @@ print(result.group())
 - 整个字符串都找不到，返回None
 ##### 示例代码
 ```
-result2 = re.search('java',sentence)
-print(result2)
-print(result2.span())
-print(result2.group())
+result = re.search('java',sentence)
+print(result)
+print(result.span())
+print(result.group())
 ```
 #### findall(匹配规则， 被匹配字符串)
 ##### 功能
 - 匹配整个字符串，找出全部匹配项
 - 找不到返回空list: []
+
+#### finditer(匹配规则， 被匹配字符串)
+##### 功能
+- 匹配整个字符串，找出全部匹配项
+- 把结果封装到一个迭代器中
 ##### 示例代码
+```
+result = re.finditer('java',sentence)
+for e in result:
+    print(e.group())
+```
+
+### 预加载正则表达式
+#### 功能
+在匹配前先定义好正则表达式格式
+#### 语法
+```
+re.compile()
+```
+#### 示例代码
+```
+pattern = re.compile('\d+')
+result = pattern.findall('My phone number is 123456, my friend\'s is 654321')
+print(result)
+```
 
 ### 元字符匹配
 #### 单字符匹配
