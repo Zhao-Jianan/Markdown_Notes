@@ -1,4 +1,3 @@
-```markdown
 # 📒 Markdown_Notes
 
 Welcome to **Markdown_Notes** — a personal collection of all my learning notes!  
@@ -59,4 +58,3 @@ Markdown_Notes/
 ## 📬 Contact
 
 If you have suggestions, feedback, or would like to collaborate, feel free to open an **Issue** or submit a **Pull Request**!
-```
