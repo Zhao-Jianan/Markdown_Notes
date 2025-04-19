@@ -11,15 +11,11 @@ This repository contains notes on various topics like programming, frameworks, d
 Markdown_Notes/
 ├── Develop/
 │   ├── △JavaWeb note.md
-│   ├── △SpringBoot note.md
+│   ├── △Python note.md
 │   ├── ...
-├── ComputerBasics/
-│   ├── △Computer Networks.md
-│   ├── △Operating Systems.md
-│   ├── ...
-├── Tools/
-│   ├── △Git Tips.md
-│   ├── △VSCode Setup.md
+├── Model/
+│   ├── △Blender note.md
+│   ├── △C4D note.md
 │   ├── ...
 └── README.md
 ```
