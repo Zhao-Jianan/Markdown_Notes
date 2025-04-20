@@ -9,15 +9,20 @@ This repository contains notes on various topics like programming, frameworks, d
 
 ```
 Markdown_Notes/
-├── Develop/
-│   ├── △JavaWeb note.md
-│   ├── △Python note.md
-│   ├── ...
-├── Model/
-│   ├── △Blender note.md
-│   ├── △C4D note.md
-│   ├── ...
+├── DevHub/
+│   ├── Artificial Intelligence/
+│   │   └── △Deep Learning Note.md
+│   ├── Software Engineering/
+│   │   └── △JavaWeb Note.md
+│   └── ...
+├── CGTechNotes/
+│   ├── 3D Modeling/
+│   │   └── △Blender Note.md
+│   ├── VFX/
+│   │   └── △Clarisse Note.md
+│   └── ...
 └── README.md
+
 ```
 
 > 📌 Notes are organized by topic, and each filename starts with a `△` symbol for easy identification.
