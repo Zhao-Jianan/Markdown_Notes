@@ -342,7 +342,7 @@
     - Base Color------------------基础颜色
     - Height----------------------高度参数
       - Height Range----------------高度范围
-※※※※※注意如果想让材质输出的高度图与制作的高度保持一致，需要把Height Range设为1
+**注意如果想让材质输出的高度图与制作的高度保持一致，需要把Height Range设为1**
     - User-Defind Maps------------自定义映射，用来激活输入端口
 
 #### PBR BaseColor(Metallic) Validate/PBR颜色（金属性）验证
