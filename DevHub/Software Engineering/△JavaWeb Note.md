@@ -2756,7 +2756,7 @@ Spring框架为了更好的标识web应用程序开发当中，bean对象到底�
 声明bean的基础注解，当不属于下面三类时，用此注解
 - ```@Controller```
 @Component的衍生注解，标注在控制器类上
-※※※※※@RestController注解包含@Controller，不需要再额外标注
+**@RestController注解包含@Controller，不需要再额外标注
 - ```@Service```
 @Component的衍生注解，标注在业务类上
 - ```@Repository```

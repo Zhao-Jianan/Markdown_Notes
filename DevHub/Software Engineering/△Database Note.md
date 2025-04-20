@@ -1921,7 +1921,7 @@ END IF;
 ```
 CREATE PROCEDURE 存储过程名称 ([ IN/OUT/INOUT 参数名 参数类型 ])
 BEGIN
-    -- SQL语句
+-  SQL语句
 END ;
 ```
 

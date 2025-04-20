@@ -1178,7 +1178,7 @@ UnrealHeaderTool代码生成器将不为此函数生成thunk，用户需要自�
 ###### CustomStructureParam="Parameter1, Parameter2, .."
 列出的参数都会被视为通配符。此说明符需要 UFUNCTION-level specifier、CustomThunk，而它们又需要用户提供自定义的 exec 函数。在此函数中，可对参数类型进行检查，可基于这些参数类型执行合适的函数调用。永不应调用基础 UFUNCTION，出现错误时应进行断言或记录
 
-※※※※※要声明自定义 exec 函数，使用语法 DECLARE_FUNCTION(execMyFunctionName)，MyFunctionName 为原函数命名
+**要声明自定义 exec 函数，使用语法 DECLARE_FUNCTION(execMyFunctionName)，MyFunctionName 为原函数命名
 
 ###### DefaultToSelf
 用于 BlueprintCallable 函数，说明对象属性的命名默认值应为节点的自我情境
@@ -1396,7 +1396,7 @@ Make Struct和Break Struct节点中的引脚默认为隐藏状态
 
 ###### CustomStructureParam="Parameter1, Parameter2, .."
 列出的参数都会被视为通配符。此说明符需要 UFUNCTION-level specifier、CustomThunk，而它们又需要用户提供自定义的 exec 函数。在此函数中，可对参数类型进行检查，可基于这些参数类型执行合适的函数调用。永不应调用基础 UFUNCTION，出现错误时应进行断言或记录
-※※※※※要声明自定义 exec 函数，使用语法 DECLARE_FUNCTION(execMyFunctionName)，MyFunctionName 为原函数命名
+**要声明自定义 exec 函数，使用语法 DECLARE_FUNCTION(execMyFunctionName)，MyFunctionName 为原函数命名
 
 ###### DefaultToSelf
 用于 BlueprintCallable 函数，说明对象属性的命名默认值应为节点的自我情境
@@ -1506,7 +1506,7 @@ Make Struct和Break Struct节点中的引脚默认为隐藏状态
 
 ###### EditFixedOrder
 使排列的元素无法通过拖拽来重新排序
-※※※※※EditCondition元标签不再仅限于单个布尔属性。它现在由完全成熟的算式解析器计算，意味着可以包含一个完整的C++表达式
+**EditCondition元标签不再仅限于单个布尔属性。它现在由完全成熟的算式解析器计算，意味着可以包含一个完整的C++表达式
 
 ###### ExactClass="true"
 结合 AllowedClasses 用于 FSoftObjectPath 属性。说明是否只能使用 AllowedClasses 中指定的准确类，或子类是否同样有效
@@ -1627,7 +1627,7 @@ AssetRegistrySearchable 说明符说明此属性与其值将被自动添加到�
 
 ###### EditAnywhere
 说明此属性可通过属性窗口在原型和实例上进行编辑。此说明符与所有"可见"说明符均不兼容
-※※※※※组件因为都是指针，所以不要将组件指针设为EditAnywhere或者EditDefaultsOnly,只需要设置可见性即可，即VisibleAnywhere
+**组件因为都是指针，所以不要将组件指针设为EditAnywhere或者EditDefaultsOnly,只需要设置可见性即可，即VisibleAnywhere
 
 ###### EditDefaultsOnly
 说明此属性可通过属性窗口进行编辑，但只能在原型上进行。此说明符与所有"可见"说明符均不兼容
@@ -1762,7 +1762,7 @@ ReplicatedUsing说明符指定一个回调函数，其在属性通过网络更�
 
 ###### EditFixedOrder
 使排列的元素无法通过拖拽来重新排序
-※※※※※EditCondition元标签不再仅限于单个布尔属性。它现在由完全成熟的算式解析器计算，意味着可以包含一个完整的C++表达式
+**EditCondition元标签不再仅限于单个布尔属性。它现在由完全成熟的算式解析器计算，意味着可以包含一个完整的C++表达式
 
 ###### ExactClass="true"
 结合 AllowedClasses 用于 FSoftObjectPath 属性。说明是否只能使用 AllowedClasses 中指定的准确类，或子类是否同样有效
