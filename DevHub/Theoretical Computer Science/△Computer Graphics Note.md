@@ -2526,7 +2526,7 @@ $$
 - 非常慢！
 为了通用起见，我们稍后使用“对象”一词代替三角形（但并不一定指整个对象）
 
-## 边界体积 Bounding Volumes
+### 边界体积 Bounding Volumes
 避免相交的快速方法：将复杂物体与简单体积绑定
 - 物体完全包含在体积中
 - 如果物体没有撞击体积，则不会撞击物体
@@ -2559,6 +2559,597 @@ $$
   - 射线的原点在盒子内部——有相交！
 - 综上所述，射线与 AABB 相交，当且仅当：
   - tenter < texit && texit >= 0
+
+### 使用 AABB 加速光线追踪
+#### 均匀空间分区（网格）
+##### 预处理——构建加速网格
+1. 查找边界框 Find bounding box
+2. 创建网格 Create grid
+3. 将每个对象存储在重叠的单元格中 Store each object in overlapping cells
+
+##### 光线-场景相交
+按射线遍历顺序遍历网格
+
+对于每个网格单元
+测试与该单元存储的所有对象的交集
+
+##### 网格分辨率
+一个单元格
+- 无加速
+单元格过多
+- 多余的网格遍历导致效率低下
+
+##### 启发式
+- #cells = C * #objs 
+- C ≈ 27 in 3D
+
+##### 均匀网格——当它们有效时
+网格非常适合处理大小和空间分布均匀的大量对象
+##### 均匀网格——当它们失效时
+“体育场里的茶壶”问题
+
+
+#### 空间分区 Spatial Partitions
+##### 空间分区例子
+- Oct-Tree
+- KD-Tree
+- BSP-Tree
+
+##### KD树预处理
+##### KD树的数据结构 Data Structure for KD-Trees
+- 内部节点存储
+  - 分割轴：x、y 或 z 轴
+  - 分割位置：分割平面沿轴的坐标
+  - 子节点：指向子节点的指针
+  - 内部节点不存储任何对象
+- 叶节点存储
+  - 对象列表
+
+##### 遍历KD树
+
+
+#### 对象分区和边界体积层次结构 (BVH)
+Object Partitions & 
+Bounding Volume Hierarchy (BVH)
+
+- 查找边界框
+- 递归地将对象集拆分为两个子集
+- 重新计算子集的边界框
+- 必要时停止
+- 将对象存储在每个叶节点中
+
+
+##### 构建 BVH
+如何细分节点
+- 选择要拆分的维度
+- 启发式方法 #1：始终选择节点中最长的轴
+- 启发式方法 #2：在中间对象的位置拆分节点
+
+终止条件
+- 启发式方法：当节点包含较少元素时停止
+
+##### BVH 的数据结构
+内部节点存储
+- 边界框
+- 子节点：指向子节点的指针
+
+叶节点存储
+- 边界框
+- 对象列表
+
+节点表示场景中图元的子集
+- 子树中的所有对象
+
+##### BVH遍历
+```
+Intersect(Ray ray, BVH node) {
+  if (ray misses node.bbox) return;
+
+  if (node is a leaf node)
+    test intersection with all objs;
+    return closest intersection;
+
+  hit1 = Intersect(ray, node.child1);
+  hit2 = Intersect(ray, node.child2);
+
+  return the closer of hit1, hit2;
+}
+```
+
+#### 空间分区与对象分区
+- 空间分区（例如 KD 树）
+  - 将空间划分为不重叠的区域
+  - 一个对象可以包含在多个区域中
+- 对象分区（例如 BVH）
+  - 将对象集划分为不相交的子集
+  - 每个集合的边界框可能在空间上重叠
+
+
+## 辐射度量学 Radiometry
+### 动机
+在Blinn-Phong 模型中，例如，光强度 I 为 10
+但是 10 是什么？
+
+Whitted 式光线追踪能给出正确的结果吗？
+
+所有答案都可以在辐射测量中找到
+- 还有“路径追踪”的基础知识
+
+### 定义
+照明测量系统和单位
+精确测量光的空间特性
+- 新术语：辐射通量、强度、辐照度、辐射亮度
+
+以物理上正确的方式进行照明计算
+
+
+### 辐射能量和通量（功率）
+Radiant Energy and Flux (Power)
+
+定义：辐射能是电磁辐射的能量。其单位为焦耳，符号为：
+$$
+Q \, [J = \text{Joule}]
+$$
+
+
+定义：辐射通量（功率）是单位时间内发射、反射、传输或接收的能量
+$$
+\Phi = \frac{dQ}{dt} \quad [W = \text{Watt}] \quad [lm = \text{lumen}]
+$$
+
+
+通量Flux： 单位时间内流过传感器的光子数
+
+### 重要的光照度量
+| 光的类型         | 光照度量           | 英文对照              |
+|-----------------|-----------------|--------------------|
+| 光源发出的光     | 辐射强度         | Radiant Intensity  |
+| 照射到表面的光   | 辐照度           | Irradiance         |
+| 沿射线传播的光   | 辐射亮度         | Radiance           |
+
+
+#### 辐射强度 Radiant Intensity
+##### 定义
+辐射（发光）强度是指点光源在单位立体角内发射的功率
+$$
+I(\nu) \equiv \frac{d\Phi}{d\omega} 
+$$
+
+$$
+[\frac{W}{sr}] = [\frac{\text{lm}}{\text{sr}} = \text{cd} = \text{candela}]
+$$
+
+坎德拉是国际单位制七个基本单位之一
+
+##### 角和立体角
+###### 角度
+圆周上对角弧长与半径的比值
+$$
+\theta = \frac{l}{r}
+$$
+
+圆有2π个弧度
+
+###### 立体角
+球面所对面积与半径平方之比
+$$
+\omega = \frac{A}{r^2}
+$$
+球体有4π个立体角
+
+###### 微分立体角
+$$
+dA = (r\, d\theta)(r \sin \theta\, d\varphi) = r^2 \sin \theta\, d\theta\, d\varphi
+$$
+
+$$
+d\omega = \frac{dA}{r^2} = \sin \theta\, d\theta\, d\varphi
+$$
+
+Sphere: S^2
+
+$$
+\Omega = \int_{S^2} d\omega 
+= \int_0^\pi \int_0^{2\pi} \sin \theta\, d\theta\, d\varphi
+= \left[-\cos \theta\right]_0^\pi \times \left[\varphi\right]_0^{2\pi}
+= (2) \times (2\pi)
+= 4\pi
+$$
+
+$\omega$用于表示方向向量（单位长度）
+
+##### 各向同性点源 Isotropic Point Source
+$$
+\Phi = \int_{S^2} I\, d\omega = 4\pi I
+$$
+
+$$
+I = \frac{\Phi}{4\pi}
+$$
+
+##### 现代LED灯
+- 输出：815 流明（11W LED 替代60W 白炽灯）
+-辐射强度？
+假设各向同性：
+Intensity = 815 lumens / 4pi sr  = 65 candelas
+
+#### 辐照度 Irradiance
+定义：辐照度是指照射到表面点的单位面积的功率
+
+$$
+E(x) \overset{\mathrm{def}}{=} \frac{d\Phi(x)}{dA}
+$$
+
+$$
+[\frac{m}{W^2}] [\frac{m}{lm^2} = \text{lux}]
+$$
+
+
+##### 兰伯特余弦定律 Lambert’s Cosine Law
+表面辐照度与光线方向和表面法线夹角的余弦成正比
+
+- 立方体顶面接收一定量的能量
+
+$$
+E = \frac{\Phi}{A}
+$$
+
+
+- 60°旋转立方体的顶面接收一半功率
+
+$$
+E = \frac{1}{2} \frac{\Phi}{A}
+$$
+
+- 一般来说，单位面积的功率为
+
+$$
+\cos \theta = \mathbf{l} \cdot \mathbf{n}
+$$
+
+$$
+E = \frac{\Phi}{A \cos \theta}
+$$
+
+##### 辐照度衰减
+
+#### 辐射亮度 Radiance
+
+辐射亮度是描述环境中光分布的基本场量
+- 辐射亮度是与射线相关的量
+- 渲染的核心在于计算辐射亮度
+
+##### 定义
+辐射度（亮度）是指表面在单位立体角、单位投影面积内发射、反射、透射或接收的功率。
+
+$$
+L(p, \mathbf{\omega}) \overset{\mathrm{def}}{=} \frac{d^2 \Phi(p, \omega)}{d\omega dA \cos \theta}
+$$
+
+$$
+\left[ \frac{W}{\text{sr m}^2} \right] \quad \left[ \frac{\text{cd}}{\text{m}^2} = \frac{\text{lm}}{\text{sr m}^2} = \text{nit} \right]
+$$
+
+
+单位立体角每单位投影面积的功率
+
+
+- 辐照度：单位投影面积的功率
+- 强度：单位立体角的功率
+因此
+- 辐射亮度：单位立体角的辐照度
+- 辐射亮度：单位投影面积的强度
+
+##### 入射辐射亮度 Incident Radiance
+入射辐射亮度是指到达表面的每单位立体角的辐射亮度
+
+$$
+L(p, \omega) = \frac{dE(p)}{d\omega \cos \theta} 
+$$
+
+即，它是沿给定射线（表面上的点和入射方向）到达表面的光
+
+##### 出射辐射亮度 Exiting Radiance
+出射表面辐射亮度是指离开表面的单位投影面积的强度
+$$
+L(p, \omega) = \frac{dI(p, \omega)}{dA \cos \theta} 
+$$
+
+例如，对于区域光来说，它是沿给定射线（表面上的点和出射方向）发射的光
+
+
+##### 辐照度与辐射亮度
+辐照度：区域 dA 接收的总功率
+辐射亮度：区域 dA 从“方向” dω 接收的功率
+
+$$
+dE(p, \omega) = L_i(p, \omega) \cos \theta \, d\omega
+$$
+
+$$
+E(p) = \int_{H2} L_i(p, \omega) \cos \theta \, d\omega
+$$
+
+
+##### 双向反射分布函数 (BRDF)
+Bidirectional Reflectance Distribution Function
+
+###### 点的反射
+来自ω_i方向的辐射亮度转化为dA接收的功率E。
+然后，功率E将转化为向任何其他方向ω的辐射亮度
+
+双向反射分布函数 (BRDF) 表示从每个入射方向反射到每个出射方向ω_r的光量
+
+$$
+f_r(\omega_i \rightarrow \omega_r) = \frac{dL_r(\omega_r)}{dE_i(\omega_i)} 
+= \frac{dL_r(\omega_r)}{L_i(\omega_i) \cos \theta_i \, d\omega_i}
+\qquad [\text{sr}^{-1}]
+$$
+
+反射方程
+$$
+L_r(p, \omega_r) = \int_{H^2} f_r(p, \omega_i \rightarrow \omega_r) \, L_i(p, \omega_i) \, \cos \theta_i \, d\omega_i
+$$
+
+递归方程
+反射辐射取决于入射辐射
+但入射辐射取决于反射辐射（在场景中的另一点）
+
+
+渲染方程
+$$
+L_o(p, \omega_o) = L_e(p, \omega_o) + \int_{\Omega^+} L_i(p, \omega_i) \, f_r(p, \omega_i, \omega_o) \, (\mathbf{n} \cdot \omega_i) \, d\omega_i
+$$
+
+## 概率论回顾 Probability Review
+### 随机变量 Random Variables
+随机变量：表示潜在值的分布
+概率密度函数 (PDF)：描述随机过程选择值的相对概率
+
+### 随机变量的期望值 Expected Value of a Random Variable
+从随机分布中反复抽取样本得到的平均值
+X的期望值：
+$$
+E[X] = \sum_{i=1}^{n} x_i p_i
+$$
+
+### 概率分布函数 (PDF)
+Probability Distribution Function (PDF)
+
+一个随机变量 X，它可以取一组连续的值，其中特定值的相对概率由连续概率密度函数 p(x) 给出
+
+p(x) 的条件
+$$
+p(x) \geq 0  and  \int_{-\infty}^{+\infty} p(x) \, dx = 1
+$$
+
+X 的期望值
+$$
+E[X] = \int_{-\infty}^{+\infty} x \, p(x) \, dx
+$$
+
+### 随机变量函数
+随机变量 X 的函数 Y 也是随机变量
+$$
+X \sim p(x)
+$$
+$$
+Y = f(X)
+$$
+
+随机变量函数的期望值
+$$
+E[Y] = E[f(X)] = \int f(x)\, p(x)\, dx
+$$
+
+## 蒙特卡洛积分 Monte Carlo Integration
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
