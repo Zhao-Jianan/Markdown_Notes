@@ -99,6 +99,7 @@ $$
 幅值为 1 的向量
 
 求向量的单位向量（归一化）：
+
 $$
 \hat{\mathbf{a}} = \frac{\vec{a}}{\|\vec{a}\|}
 $$
@@ -117,39 +118,45 @@ X 和 Y 可以是任意（通常是正交单位）向量
 #### 1. 向量 **A** 的坐标表示（**A =**）：
 
 **二维向量**：
-  $$
-  \mathbf{A} = \begin{pmatrix} x \\ y \end{pmatrix}
-  $$
+
+$$
+\mathbf{A} = \begin{pmatrix} x \\ y \end{pmatrix}
+$$
 
 **三维向量**：
-  $$
-  \mathbf{A} = \begin{pmatrix} x \\ y \\ z \end{pmatrix}
-  $$
+
+$$
+\mathbf{A} = \begin{pmatrix} x \\ y \\ z \end{pmatrix}
+$$
 
 
 #### 2. 向量 **A** 的转置（**A.T =**）：
 
 **二维向量**：
-  $$
-  \mathbf{A}^T = \begin{pmatrix} x & y \end{pmatrix}
-  $$
+
+$$
+\mathbf{A}^T = \begin{pmatrix} x & y \end{pmatrix}
+$$
 
 **三维向量**：
-  $$
-  \mathbf{A}^T = \begin{pmatrix} x & y & z \end{pmatrix}
-  $$
+
+$$
+\mathbf{A}^T = \begin{pmatrix} x & y & z \end{pmatrix}
+$$
 
 #### 3. 向量 **A** 的幅值（**||A|| =**）：
 
 **二维向量**：
-  $$
-  \|\mathbf{A}\| = \sqrt{x^2 + y^2}
-  $$
+
+$$
+\|\mathbf{A}\| = \sqrt{x^2 + y^2}
+$$
 
 **三维向量**：
-  $$
-  \|\mathbf{A}\| = \sqrt{x^2 + y^2 + z^2}
-  $$  
+
+$$
+\|\mathbf{A}\| = \sqrt{x^2 + y^2 + z^2}
+$$  
 
 
 ### 向量乘法 Vector Multiplication
@@ -158,6 +165,7 @@ X 和 Y 可以是任意（通常是正交单位）向量
 - 正交基和坐标系
 
 #### 点积 Dot (scalar) Product
+
 $$
 \vec{a} \cdot \vec{b} = k \|\vec{a}\| \|\vec{b}\| \cos \theta
 $$
@@ -173,6 +181,7 @@ $$
 
 
 ##### 特性 Properties
+
 $$
 \vec{a} \cdot \vec{b} = \vec{b} \cdot \vec{a}
 $$
@@ -189,16 +198,18 @@ $$
 逐个分量相乘，然后相加
 
 **In 2D**:
-  $$ 
-  \vec{a} \cdot \vec{b} = \begin{pmatrix} x_a \\ y_a \end{pmatrix} \cdot \begin{pmatrix} x_b \\ y_b \end{pmatrix} = x_a x_b + y_a y_b
-  $$
+
+$$ 
+\vec{a} \cdot \vec{b} = \begin{pmatrix} x_a \\ y_a \end{pmatrix} \cdot \begin{pmatrix} x_b \\ y_b \end{pmatrix} = x_a x_b + y_a y_b
+$$
 
 **In 3D**:
-  $$ 
-  \vec{a} \cdot \vec{b} = 
-  \begin{pmatrix} x_a \\ y_a \\ z_a \end{pmatrix} \cdot 
-  \begin{pmatrix} x_b \\ y_b \\ z_b \end{pmatrix} = x_a x_b + y_a y_b + z_a z_b
-  $$  
+
+$$ 
+\vec{a} \cdot \vec{b} = 
+\begin{pmatrix} x_a \\ y_a \\ z_a \end{pmatrix} \cdot 
+\begin{pmatrix} x_b \\ y_b \\ z_b \end{pmatrix} = x_a x_b + y_a y_b + z_a z_b
+$$  
 
 ##### 图形学中的点积
 - 计算两个向量之间的夹角
@@ -237,6 +248,7 @@ $$
 - 有助于构建坐标系
 
 ##### 特性
+
 $$
 \vec{x} \times \vec{y} = +\vec{z}
 $$
@@ -320,6 +332,7 @@ $$
 
 ##### 正交坐标系中的框架
 任意 3 个向量（三维空间）的集合
+
 $$
 k \vec{u} = k \vec{v} = k \vec{w}
 $$
@@ -431,6 +444,7 @@ $$
 $$
 
 #### 性质
+
 $$
 (AB)^T = B^T A^T
 $$
@@ -456,6 +470,7 @@ $$
 
 ### 矩阵形式的向量乘法
 #### 点乘
+
 $$
 \vec{a} \cdot \vec{b} = \vec{a}^T \vec{b}
 = \begin{pmatrix}
@@ -470,6 +485,7 @@ z_b
 $$
 
 #### 叉乘
+
 $$
 \vec{a} \times \vec{b} = A^* \vec{b} =
 \begin{pmatrix}
@@ -497,17 +513,20 @@ $$
 ### 用矩阵表示变换
 #### 缩放变换
 ##### 缩放
+
 $$
 \text{scale}' = S \, \text{scale}
 $$
 
 ##### 缩放变换
+
 $$
 x' = s_x \, x \\
 y' = s_y \, y
 $$
 
 ##### 缩放矩阵
+
 $$
 \begin{pmatrix}
 x' \\
@@ -520,6 +539,7 @@ y\end{pmatrix}
 $$
 
 ##### 非均匀缩放
+
 $$
 \begin{pmatrix}
 x' \\
@@ -535,6 +555,7 @@ y
 $$
 
 ##### 反射矩阵
+
 $$
 \begin{pmatrix}
 x' \\
@@ -548,6 +569,7 @@ y
 $$
 
 ##### 剪切矩阵 Shear Matrix
+
 $$
 \begin{pmatrix}
 x' \\
@@ -566,6 +588,7 @@ y=1 时水平位移为 a
 垂直位移始终为 0
 
 ##### 旋转矩阵
+
 $$
 \begin{pmatrix}
 x' \\
@@ -583,12 +606,14 @@ $$
 #### 线性变换
 **线性变换=矩阵（相同维度）**
 展开写法
+
 $$
 x' = a x + b y \\
 y' = c x + d y
 $$
 
 二维一般线性变换公式
+
 $$
 \begin{pmatrix}
 x' \\
@@ -600,6 +625,7 @@ y\end{pmatrix}
 $$
 
 矩阵乘法简记
+
 $$
 \mathbf{x'} = M \mathbf{x}
 $$
@@ -621,6 +647,7 @@ $$
 - 二维向量 = (x, y, 0)T
 
 平移的矩阵表示
+
 $$
 \begin{pmatrix}
 x' \\
@@ -662,6 +689,7 @@ $$
 
 ## 仿射变换 Affine Transformations
 仿射映射 = 线性映射 + 平移
+
 $$
 \begin{pmatrix}
 x' \\
@@ -680,6 +708,7 @@ t_y
 $$
 
 使用齐次坐标：
+
 $$
 \begin{pmatrix}
 x' \\
@@ -697,6 +726,7 @@ $$
 
 ## 二维变换 2D Transformations
 ### 缩放 Scale
+
 $$
 S(s_x, s_y) =
 \begin{pmatrix}
@@ -707,6 +737,7 @@ s_x & 0   & 0 \\
 $$
 
 ### 旋转 Rotation
+
 $$
 R(\alpha) =
 \begin{pmatrix}
@@ -717,6 +748,7 @@ R(\alpha) =
 $$
 
 ### 平移 Translation
+
 $$
 T(t_x, t_y) =
 \begin{pmatrix}
@@ -727,6 +759,7 @@ T(t_x, t_y) =
 $$
 
 ### 逆变换 Inverse Transform
+
 $$
 M^{-1}
 $$
@@ -745,6 +778,7 @@ T(1, 0) \cdot R_{45} \cdot M
 $$
 
 **注意，矩阵是从右到左应用的**
+
 $$
 T(1,0) \cdot R_{45^\circ} \cdot
 \begin{pmatrix}
@@ -859,6 +893,7 @@ $$
 
 
 ### 缩放
+
 $$
 S(s_x, s_y, s_z) =
 \begin{pmatrix}
@@ -870,6 +905,7 @@ s_x & 0 & 0 & 0 \\
 $$
 
 ### 平移
+
 $$
 T(t_x, t_y, t_z) =
 \begin{pmatrix}
@@ -883,6 +919,7 @@ $$
 ### 旋转
 #### 绕 x、y 或 z 轴旋转
 绕 x 轴旋转
+
 $$
 R_x(\alpha) =
 \begin{pmatrix}
@@ -894,6 +931,7 @@ R_x(\alpha) =
 $$
 
 绕 y 轴旋转
+
 $$
 R_y(\alpha) =
 \begin{pmatrix}
@@ -905,6 +943,7 @@ R_y(\alpha) =
 $$
 
 绕 z 轴旋转
+
 $$
 R_z(\alpha) =
 \begin{pmatrix}
@@ -916,6 +955,7 @@ R_z(\alpha) =
 $$
 
 #### 组合旋转矩阵
+
 $$
 R_{xyz}(\alpha, \beta, \gamma) = R_x(\alpha) \cdot R_y(\beta) \cdot R_z(\gamma)
 $$
@@ -927,6 +967,7 @@ $$
 Rodrigues’ Rotation Formula
 
 绕轴 n 旋转角度 α
+
 $$
 R(\mathbf{n}, \alpha) = \cos(\alpha) I + (1 - \cos(\alpha)) \mathbf{n} \mathbf{n}^T + \sin(\alpha)
 \begin{pmatrix}
@@ -978,6 +1019,7 @@ $$
 - 因此它位于原点，在 Y 上，看 -Z
 
 数学中的 M_view
+
 $$
 M_{view} = R_{view} T_{view}
 $$
@@ -1070,6 +1112,7 @@ x' = \frac{n}{z} x \quad (\text{similar to } y')
 $$
 
 在齐次坐标中
+
 $$
 \begin{pmatrix}
 x \\
@@ -1085,6 +1128,7 @@ z \\
 $$
 
 因此“挤压”（透视到正交）投影可以实现这一点
+
 $$
 M_{persp} = 
 \begin{pmatrix}
@@ -1494,6 +1538,7 @@ for (each triangle T)
 着色不受视线方向影响
 
 公式
+
 $$
 L_d = k_d \left( \frac{I}{r^2} \right) \max(0, \mathbf{n} \cdot \mathbf{l})
 $$
@@ -1521,6 +1566,7 @@ V 接近镜像方向 <==>半向量接近法线
 
 
 镜面反射光照公式
+
 $$
 L_s = k_s \left(\frac{I}{r^2}\right) \max(0, \cos \alpha)^p
 = k_s \left(\frac{I}{r^2}\right) \max(0, \mathbf{n} \cdot \mathbf{h})^p
@@ -1547,6 +1593,7 @@ $$
 
 
 环境光照公式
+
 $$
 L_a = k_a I_a
 $$
@@ -1756,21 +1803,28 @@ $$
 $$
 (\alpha, \beta, \gamma) = (1, 0, 0)
 $$
+
 $$ 
 (x, y) = \alpha A + \beta B + \gamma C = A
 $$
 
 
 #### 几何观点——比例面积
+
 $$ \alpha = \frac{AA}{AA + AB + AC} $$
+
 $$ \beta = \frac{AB}{AA + AB + AC} $$
+
 $$ \gamma = \frac{AC}{AA + AB + AC} $$
 
 #### 质心的重心坐标是多少？
+
 $$(\alpha, \beta, \gamma) = \left( \frac{1}{3}, \frac{1}{3}, \frac{1}{3} \right)$$
+
 $$(x, y) = \frac{1}{3} A + \frac{1}{3} B + \frac{1}{3} C$$
 
 #### 重心坐标：公式
+
 $$ \alpha = \frac{-(x - x_B)(y_C - y_B) + (y - y_B)(x_C - x_B)}{-(x_A - x_B)(y_C - y_B) + (y_A - y_B)(x_C - x_B)} $$
 
 $$ \beta = \frac{-(x - x_C)(y_A - y_C) + (y - y_C)(x_A - x_C)}{-(x_B - x_C)(y_A - y_C) + (y_B - y_C)(x_A - x_C)} $$
@@ -1779,6 +1833,7 @@ $$ \gamma = 1 - \alpha - \beta $$
 
 #### 使用重心坐标
 在顶点处线性插值
+
 $$ V = \alpha V_A + \beta V_B + \gamma V_C $$
 
 V_A、V_B、V_C 可以是
@@ -1979,6 +2034,7 @@ EWA 过滤
 
 #### 隐式表面
 **采样可能很困难**
+
 $$
 f(x, y, z) = (2 - \sqrt{x^2 + y^2})^2 + z^2 - 1
 $$
@@ -1988,9 +2044,11 @@ $$
 有些任务很难用隐式表示
 
 **简单内部/外部测试简单**
+
 $$
 f(x, y, z) = x^2 + y^2 + z^2 - 1
 $$
+
 隐式表示使一些任务变得简单
 
 
@@ -2045,11 +2103,13 @@ $$
 所有点均直接给出或通过参数映射给出
 #### 显式表面
 **采样很容易**
+
 $$
 f(u, v) = \left( (2 + \cos u) \cos v, \ (2 + \cos u) \sin v, \ \sin u \right)
 $$
 
 **内部/外部测试困难**
+
 $$
 f(u, v) = \left( \cos u \sin v, \ \sin u \sin v, \ \cos v \right)
 $$
@@ -2092,6 +2152,7 @@ point clouds
 
 ### ⻉塞尔曲线 Bézier Curves
 用切线定义三次贝塞尔曲线
+
 $$
 t_0 = 3(p_1 - p_0)
 $$
@@ -2133,6 +2194,7 @@ b_2^0(t) = (1 - t)^2 b_0 + 2t(1 - t) b_1 + t^2 b_2
 $$
 
 n 阶贝塞尔曲线的伯恩斯坦形式：
+
 $$
 b_n(t) = b_n^0(t) = \sum_{j=0}^{n} b_j B_j^n(t)
 $$
@@ -2161,12 +2223,14 @@ $$
 
 
 这些点定义了一条三维贝塞尔曲线，它是 t 的三次多项式：
+
 $$
 \mathbf{b}_n(t) = \mathbf{b}_0 (1 - t)^3 + \mathbf{b}_1 \, 3t(1 - t)^2 + \mathbf{b}_2 \, 3t^2(1 - t) + \mathbf{b}_3 \, t^3
 $$
 
 #### 三次贝塞尔基函数
 伯恩斯坦多项式
+
 $$
 B_i^n(t) = \binom{n}{i} \, t^i \, (1 - t)^{n-i}
 $$
@@ -2204,20 +2268,24 @@ $$
 *广泛使用（字体、路径、Illustrator、Keynote 等）*
 
 ##### 分段贝塞尔曲线连续性
+
 $$
 a : [k, k+1] \rightarrow \mathbb{R}^N \\
 b : [k+1, k+2] \rightarrow \mathbb{R}^N
 $$
 
 ###### C0 连续性
+
 $$
 a_n = b_0
 $$
 
 ###### C1 连续性
+
 $$
 a_n = b_0 = \frac{1}{2}(a_{n-1} + b_1)
 $$
+
 ### 其他类型的曲线
 #### 样条曲线 Spline
 - 一条连续曲线，通过给定的一组点，并具有一定数量的连续导数
@@ -2269,6 +2337,7 @@ Mesh subdivision (upsampling)
 
 ##### 对于新顶点
 更新到
+
 $$
 \frac{3}{8} (A + B) + \frac{1}{8} (C + D)
 $$
@@ -2276,6 +2345,7 @@ $$
 ##### 对于旧顶点
 例如此处的 6 度顶点
 更新到
+
 $$
 (1 - n \cdot u) \cdot \text{original\_position} + u \cdot \text{neighbor\_position\_sum}
 $$
@@ -2287,6 +2357,7 @@ $$
 - 连接所有新顶点
 
 ##### Catmull-Clark 顶点更新规则（四边形网格）
+
 $$
 f = \frac{v1 + v2 + v3 + v4}{4}
 $$
@@ -2388,6 +2459,7 @@ Whitted 风格
 ### 射线方程
 射线由其原点和方向向量定义
 射线方程
+
 $$
 \text{Ray}(t) = \mathbf{o} + t \mathbf{d}, \quad 0 \leq t < 1
 $$
@@ -2401,11 +2473,13 @@ $t$：射线参数，控制射线上点的位置，范围是 $0 \leq t < 1$
 
 ### 射线与球体相交
 射线
+
 $$
 \mathbf{r}(t) = \mathbf{o} + t \mathbf{d}, \quad 0 \leq t < 1
 $$
 
 球体
+
 $$
 (\mathbf{p} - \mathbf{c})^2 - R^2 = 0
 $$
@@ -2442,16 +2516,19 @@ $$
 
 ### 射线与隐式表面的相交
 射线
+
 $$
 \mathbf{r}(t) = \mathbf{o} + t \mathbf{d}, \quad 0 \leq t < 1
 $$
 
 一般隐式曲面：
+
 $$
 p : f(p) = 0
 $$
 
 代换射线方程：
+
 $$
 f(\mathbf{o} + t \mathbf{d}) = 0
 $$
@@ -2480,22 +2557,26 @@ $$
 平面由法向量和平面上的一个点定义
 
 平面方程（若 p 满足该方程，则 p 在平面上）：
+
 $$
 \mathbf{p} : (\mathbf{p} - \mathbf{p_0}) \cdot \mathbf{N} = 0
 $$
 
 ### 射线与平面的相交
 光线方程
+
 $$
 \mathbf{r}(t) = \mathbf{o} + t \mathbf{d}, \quad 0 \leq t < 1
 $$
 
 平面方程
+
 $$
 \mathbf{p} : (\mathbf{p} - \mathbf{p_0}) \cdot \mathbf{N} = 0
 $$
 
 求解交点
+
 $$
 \mathbf{p} = \mathbf{r}(t) \quad \text{and solve for} \quad t
 $$
@@ -2687,12 +2768,14 @@ Whitted 式光线追踪能给出正确的结果吗？
 Radiant Energy and Flux (Power)
 
 定义：辐射能是电磁辐射的能量。其单位为焦耳，符号为：
+
 $$
 Q \, [J = \text{Joule}]
 $$
 
 
 定义：辐射通量（功率）是单位时间内发射、反射、传输或接收的能量
+
 $$
 \Phi = \frac{dQ}{dt} \quad [W = \text{Watt}] \quad [lm = \text{lumen}]
 $$
@@ -2711,6 +2794,7 @@ $$
 #### 辐射强度 Radiant Intensity
 ##### 定义
 辐射（发光）强度是指点光源在单位立体角内发射的功率
+
 $$
 I(\nu) \equiv \frac{d\Phi}{d\omega} 
 $$
@@ -2724,6 +2808,7 @@ $$
 ##### 角和立体角
 ###### 角度
 圆周上对角弧长与半径的比值
+
 $$
 \theta = \frac{l}{r}
 $$
@@ -2732,12 +2817,15 @@ $$
 
 ###### 立体角
 球面所对面积与半径平方之比
+
 $$
 \omega = \frac{A}{r^2}
 $$
+
 球体有4π个立体角
 
 ###### 微分立体角
+
 $$
 dA = (r\, d\theta)(r \sin \theta\, d\varphi) = r^2 \sin \theta\, d\theta\, d\varphi
 $$
@@ -2759,6 +2847,7 @@ $$
 $\omega$用于表示方向向量（单位长度）
 
 ##### 各向同性点源 Isotropic Point Source
+
 $$
 \Phi = \int_{S^2} I\, d\omega = 4\pi I
 $$
@@ -2851,6 +2940,7 @@ $$
 
 ##### 出射辐射亮度 Exiting Radiance
 出射表面辐射亮度是指离开表面的单位投影面积的强度
+
 $$
 L(p, \omega) = \frac{dI(p, \omega)}{dA \cos \theta} 
 $$
@@ -2887,6 +2977,7 @@ f_r(\omega_i \rightarrow \omega_r) = \frac{dL_r(\omega_r)}{dE_i(\omega_i)}
 $$
 
 反射方程
+
 $$
 L_r(p, \omega_r) = \int_{H^2} f_r(p, \omega_i \rightarrow \omega_r) \, L_i(p, \omega_i) \, \cos \theta_i \, d\omega_i
 $$
@@ -2897,6 +2988,7 @@ $$
 
 
 渲染方程
+
 $$
 L_o(p, \omega_o) = L_e(p, \omega_o) + \int_{\Omega^+} L_i(p, \omega_i) \, f_r(p, \omega_i, \omega_o) \, (\mathbf{n} \cdot \omega_i) \, d\omega_i
 $$
@@ -2909,6 +3001,7 @@ $$
 ### 随机变量的期望值 Expected Value of a Random Variable
 从随机分布中反复抽取样本得到的平均值
 X的期望值：
+
 $$
 E[X] = \sum_{i=1}^{n} x_i p_i
 $$
@@ -2919,30 +3012,1258 @@ Probability Distribution Function (PDF)
 一个随机变量 X，它可以取一组连续的值，其中特定值的相对概率由连续概率密度函数 p(x) 给出
 
 p(x) 的条件
+
 $$
 p(x) \geq 0  and  \int_{-\infty}^{+\infty} p(x) \, dx = 1
 $$
 
 X 的期望值
+
 $$
 E[X] = \int_{-\infty}^{+\infty} x \, p(x) \, dx
 $$
 
 ### 随机变量函数
 随机变量 X 的函数 Y 也是随机变量
+
 $$
 X \sim p(x)
 $$
+
 $$
 Y = f(X)
 $$
 
 随机变量函数的期望值
+
 $$
 E[Y] = E[f(X)] = \int f(x)\, p(x)\, dx
 $$
 
 ## 蒙特卡洛积分 Monte Carlo Integration
+Why: 我们想解一个积分，但用解析解法可能太难了
+What & How: 通过对函数值的随机样本进行平均来估计函数的积分
+
+让我们为给定函数f(x)的定积分定义蒙特卡洛估计量
+
+定积分
+
+$$
+\int_{a}^{b} f(x) \, dx
+$$
+
+随机变量
+
+$$
+X_i \sim p(x)
+$$
+
+蒙特卡洛估计量
+
+$$
+F_N = \frac{1}{N} \sum_{i=1}^{N} \frac{f(X_i)}{p(X_i)}
+$$
+
+注意：
+- 样本越多，方差越小
+- 对 x 进行采样，对 x 进行积分
+
+
+## 路径追踪 Path Tracing
+### 动机
+Whitted 式光线追踪：
+- 始终执行镜面反射/折射
+- 停止在漫反射表面反弹
+
+这些简化是否合理？
+高阶：让我们逐步改进 Whitted 式光线追踪，并最终实现我们的路径追踪算法！
+
+
+### Whitted 式光线追踪存在问题
+- 对于光泽材质，射线应该在哪里反射？
+- 漫反射材料之间没有反射？
+
+Whitted 式光线追踪是错误的
+但渲染方程是正确的
+
+$$
+L_o(p, \omega_o) = L_e(p, \omega_o) + \int_{\Omega^+} L_i(p, \omega_i) \, f_r(p, \omega_i, \omega_o) \, (\mathbf{n} \cdot \omega_i) \, d\omega_i
+$$
+
+但它涉及
+- 求解半球积分，以及
+- 递归执行
+
+如何用数值方法求解积分？
+
+### 一个简单的蒙特卡罗解决方案
+
+$$
+L_o(p, \omega_o) = \int_{\Omega^+} L_i(p, \omega_i) \, f_r(p, \omega_i, \omega_o) \, (\mathbf{n} \cdot \omega_i) \, d\omega_i 
+\approx \frac{1}{N} \sum_{i=1}^{N} \frac{L_i(p, \omega_i) \, f_r(p, \omega_i, \omega_o) \, (\mathbf{n} \cdot \omega_i)}{p(\omega_i)}
+$$
+
+这是什么意思？
+直接照明的正确着色算法！
+
+```
+shade(p, wo)
+  Randomly choose N directions wi~pdf
+  Lo = 0.0
+  For each wi
+    Trace a ray r(p, wi)
+    If ray r hit the light
+      Lo += (1 / N) * L_i * f_r * cosine / pdf(wi)
+  Return Lo
+```
+
+
+### 引入全局照明
+更进一步：如果光线击中物体怎么办？
+Q 也反射光到 P！反射了多少？Q 的方向光！
+
+```
+shade(p, wo)
+  Randomly choose N directions wi~pdf
+  Lo = 0.0
+  For each wi
+    Trace a ray r(p, wi)
+    If ray r hit the light
+      Lo += (1 / N) * L_i * f_r * cosine / pdf(wi)
+      Else If ray r hit an object at q
+        Lo += (1 / N) * shade(q, -wi) * f_r * cosine / pdf(wi)
+  Return Lo
+```
+
+### 路径追踪存在的问题
+问题 1：随着 #bounces 的上升，#rays 爆炸
+
+从现在开始，我们始终假设
+每个着色点只追踪一条光线：
+```
+shade(p, wo)
+  Randomly choose ONE direction wi~pdf(w)
+  Trace a ray r(p, wi)
+  If ray r hit the light
+    Return L_i * f_r * cosine / pdf(wi)
+  Else If ray r hit an object at q
+    Return shade(q, -wi) * f_r * cosine / pdf(wi)
+```
+
+这就是路径追踪！（仅供参考，如果 N != 1，则为分布式光线追踪）
+
+### 射线生成 Ray Generation
+但这会很嘈杂！
+没问题，只需在每个像素上追踪更多路径，然后平均它们的辐射亮度！
+
+与光线追踪中的光线投射非常相似
+
+```
+ray_generation(camPos, pixel)
+  Uniformly choose N sample positions within the pixel
+  pixel_radiance = 0.0
+  For each sample in the pixel
+    Shoot a ray r(camPos, cam_to_sample)
+    If ray r hit the scene at p
+      pixel_radiance += 1 / N * shade(p, sample_to_cam)
+  Return pixel_radiance
+```
+
+问题2：递归算法永远不会停止！
+困境：光确实会不停地反弹！
+减少反弹次数 == 减少能量！
+
+解决方案：俄罗斯轮盘赌（RR）
+
+俄罗斯轮盘赌的玩法完全取决于概率
+- 如果概率为 0 < P < 1，则没问题
+- 如果概率为 1 - P，则其他情况都无所谓
+
+
+以前，我们总是向着色点发射射线，并得到着色结果
+
+假设我们手动设置一个概率 P (0 < P < 1)
+概率为 P 时，发射一条射线，
+
+返回着色结果除以 P：Lo / P
+概率为 1-P 时，不发射射线，结果为 0
+这样，你仍然可以期望得到 Lo!：
+
+$$
+E = P \times \frac{L_o}{P} + (1 - P) \times 0 = L_o
+$$
+
+```
+shade(p, wo)
+  Manually specify a probability P_RR
+  Randomly select ksi in a uniform dist. in [0, 1]
+  If (ksi > P_RR) return 0.0;
+
+  Randomly choose ONE direction wi~pdf(w)
+  Trace a ray r(p, wi)
+  If ray r hit the light
+    Return L_i * f_r * cosine / pdf(wi) / P_RR
+  Else If ray r hit an object at q
+    Return shade(q, -wi) * f_r * cosine / pdf(wi) / P_RR
+```
+
+现在我们已经有了一个正确版本的路径追踪！
+但它效率不高。
+
+
+### 采样光
+了解效率低下的原因
+
+会有 1 条光线射入光源。因此，如果我们在着色点处对半球进行均匀采样，就会有很多光线被“浪费”。
+
+蒙特卡洛方法允许任何采样方法，因此我们可以对光进行采样（因此不会有光线被“浪费”）。
+
+假设对光进行均匀采样：
+pdf = 1 / A (because ∫pdf dA = 1)
+
+但渲染方程在立体角上积分：Lo = ∫Li fr cos dω
+
+蒙特卡洛积分在 x 上采样，并在 x 上积分
+
+既然我们对光进行采样，那么我们能否对光进行积分呢？
+
+需要将渲染方程转化为 dA 的积分
+需要 dω 和 dA 之间的关系
+
+立体角的另一种定义：
+单位球面上的投影面积
+
+然后我们可以将渲染方程重写为
+
+$$
+L_o(x, \omega_o) = \int_{\Omega^+} L_i(x, \omega_i) \, f_r(x, \omega_i, \omega_o) \, \cos \theta \, d\omega_i
+= \int_A L_i(x, \omega_i) \, f_r(x, \omega_i, \omega_o) \, \frac{\cos \theta \, \cos \theta'}{\|x' - x\|^2} \, dA
+$$
+
+现在来个光积分！
+蒙特卡洛积分：
+“f(x)”：里面的一切
+PDF：1 / A
+
+之前，我们假设光线是“意外地”通过均匀半球采样射出的
+
+现在我们考虑来自两部分的辐射：
+1. 光源（直接，无需反射率）
+2. 其他反射体（间接，反射率）
+
+```
+shade(p, wo)
+  # Contribution from the light source.
+  Uniformly sample the light at x’ (pdf_light = 1 / A)
+  L_dir = L_i * f_r * cos θ * cos θ’ / |x’ - p|^2 / pdf_light 
+
+  # Contribution from other reflectors.
+  L_indir = 0.0
+  Test Russian Roulette with probability P_RR
+  Uniformly sample the hemisphere toward wi (pdf_hemi = 1 / 2pi)
+  Trace a ray r(p, wi)
+  If ray r hit a non-emitting object at q
+    L_indir = shade(q, -wi) * f_r * cos θ / pdf_hemi / P_RR
+  Return L_dir + L_indir
+```
+
+
+## 光线追踪：过去与现代概念
+- 过去
+  - 光线追踪 == Whitted 式光线追踪
+- 现代
+  - 光传输的通用解决方案，包括
+  - （单向和双向）路径追踪 path tracing 
+  - 光子映射 Photon mapping
+  - Metropolis light transport 大都会光传输
+  - VCM / UPBP…
+
+
+## 其他
+- 对半球进行均匀采样
+  - 如何进行？一般来说，如何对任意函数进行采样？
+（采样）
+- 蒙特卡洛积分允许任意概率密度函数 (pdf)
+  - 最佳选择是什么？（重要性采样）
+- 随机数重要吗？
+  - 是的！（低差异序列）
+-我可以对半球和光线进行采样。
+  - 我可以将它们结合起来吗？可以！（多重采样）
+- 像素的辐射度是所有经过它的路径的辐射度的平均值。
+  - 为什么？（像素重建滤波器）
+- 像素的辐射度是像素的颜色吗？
+  - 不是。（伽马校正、曲线、色彩空间）
+- 路径追踪还是“入门”吗？
+  - 是的。朋友们，敬畏科学吧。
+
+
+
+# 材料和外观 Materials and Appearances
+Material == BRDF
+
+## 漫反射/朗伯材质 Diffuse / Lambertian Material
+光在每个输出方向上均等地反射
+
+## 光泽材质 Glossy material (BRDF)
+理想反射/折射材料 (BSDF*)
+Ideal reflective / refractive material (BSDF*)
+
+## 完美的镜面反射 Perfect Specular Reflection
+
+## 镜面折射 Specular Refraction
+光除了在表面反射外，还可以穿过表面透射。当光进入新的介质时，会发生折射
+
+### 斯涅尔定律 Snell’s Law
+透射角取决于
+- 入射光线的折射率 (IOR)
+- 出射光线的折射率 (IOR)
+
+### 斯涅尔之窗 / 圆 Snell’s Window / Circle
+
+### 菲涅尔反射/术语 Fresnel Reflection / Term
+反射率取决于入射角（和光的偏振）
+
+
+## 微面片材质 Microfacet Material
+### 概念
+微面理论
+
+粗糙表面
+- 宏观尺度：平坦且粗糙
+- 微观尺度：凹凸不平且镜面反射
+
+表面的各个元素如同镜子
+- 被称为微面
+- 每个微面都有其自身的法线
+
+
+### 微面片双向反射分布函数 (BRDF)
+关键点：微面片法线的分布
+- 集中 <==> 光泽
+- 扩散<==>弥漫
+
+$$
+f_r(\mathbf{i}, \mathbf{o}) = \frac{F(\mathbf{i}, \mathbf{h}) \cdot G(\mathbf{i}, \mathbf{o}, \mathbf{h}) \cdot D(\mathbf{h})}{4 (\mathbf{n} \cdot \mathbf{i}) (\mathbf{n} \cdot \mathbf{o})}
+$$
+
+
+## 各向同性/各向异性材质 Isotropic / Anisotropic Materials (BRDFs)
+底层表面的方向性
+
+### 各向异性 Anisotropic BRDFs
+反射取决于方位角φ
+由表面的定向微结构（例如拉丝金属）产生
+
+$$
+f_r(\theta_i, \phi_i; \theta_r, \phi_r) \ne f_r(\theta_i, \theta_r, \phi_r - \phi_i)
+$$
+
+
+#### 拉丝金属 Brushed Metal
+
+#### 尼龙 Nylon
+#### 天鹅绒 Velvet
+
+### BRDF 的属性
+非负性 Non-negativity 
+
+$$
+f_r(\mathbf{i}, \mathbf{r}) \geq 0
+$$
+
+线性 Linearity
+
+$$
+L_r(\mathbf{p}, \mathbf{r}) = \int_{\mathcal{H}^2} f_r(\mathbf{p}, \mathbf{i}, \mathbf{r}) \, L_i(\mathbf{p}, \mathbf{i}) \, \cos \theta_i \, d\omega_i
+$$
+
+互易原则 Reciprocity principle
+
+$$
+f_r(\mathbf{p}, \mathbf{r} \rightarrow \mathbf{i}) = f_r(\mathbf{p}, \mathbf{i} \rightarrow \mathbf{r})
+$$
+
+
+能量守恒 Energy conservation
+
+$$
+\forall \mathbf{r}, \quad \int_{\mathcal{H}^2} f_r(\mathbf{i}, \mathbf{r}) \cos \theta_i \, d\omega_i \leq 1
+$$
+
+### 各向同性与各向异性 Isotropic vs. anisotropic
+如果各向同性
+
+$$
+f_r(\theta_i, \phi_i; \theta_r, \phi_r) = f_r(\theta_i, \theta_r, \phi_r - \phi_i)
+$$
+
+那么，根据互易律
+
+$$
+f_r(\theta_i, \theta_r, \phi_r - \phi_i) = f_r(\theta_r, \theta_i, \phi_i - \phi_r) = f_r(\theta_i, \theta_r, |\phi_r - \phi_i|)
+$$
+
+### 测量BRDF
+#### 动机
+无需开发/导出模型
+- 自动包含所有散射效果
+可使用真实材质进行精准渲染
+- 适用于产品设计、特效等
+
+
+#### 基于图像的BRDF测量 Image-Based BRDF Measurement
+测角反射仪 gonioreflectometer
+
+##### 一般方法
+```
+foreach outgoing direction wo
+  move light to illuminate surface with a thin beam from wo
+  for each incoming direction wi
+  move sensor to be at direction wi from surface
+  measure incident radiance
+```
+
+##### 提高效率
+- 各向同性表面将维度从四维降低到三维
+- 互易性将测量次数减少一半
+- 巧妙的光学系统……
+
+
+#### 测量 BRDF 的挑战
+- 掠射角的精确测量
+  - 由于菲涅尔效应，这一点至关重要
+- 通过足够密集的采样进行测量，以捕捉高频镜面反射
+- 逆反射
+- 空间变化的反射率……
+
+
+#### 测量双向反射分布函数 (BRDF) 的表示
+理想特性
+- 紧凑的表示
+- 测量数据的精确表示
+- 可高效评估任意方向对
+- 具有良好的重要性采样分布
+
+
+表格表示
+将间隔均匀的样本存储在
+
+$$
+(\theta_i, \theta_o, |\phi_i - \phi_o|)
+$$
+
+- 改进：重新参数化角度,以更好地匹配镜面反射
+
+通常需要重新采样测量值,并存入表格
+存储要求非常高
+
+
+# 渲染高级主题 Advanced Topics in Rendering
+## 高级光传输 Advanced Light Transport
+无偏光传输方法
+- 双向路径追踪 (BDPT)
+- Metropolis 光传输 (MLT)
+
+偏光传输方法
+- 光子映射
+- 顶点连接与合并 (VCM)
+
+即时辐射度（VPL/多种光照方法）
+
+### 有偏蒙特卡罗估计量与无偏蒙特卡罗估计量
+无偏蒙特卡罗技术不存在任何系统误差
+- 无论使用多少个样本，无偏估计量的预期值始终是正确的值
+
+否则，有偏
+- 有一种特殊情况，当使用无限个样本时，预期值会收敛到正确值——一致
+
+### 双向路径追踪 Bidirectional Path Tracing (BDPT)
+路径连接着相机和光源
+
+BDPT
+- 追踪来自相机和光源的子路径
+- 连接两个子路径的端点
+
+适用于光传输在光侧较为复杂的情况
+实现起来比较困难且速度较慢
+
+### 大都会光传输 Metropolis Light Transport (MLT)
+马尔可夫链蒙特卡洛 (MCMC) 应用
+- 从当前样本跳转到下一个样本（附带 PDF）
+
+非常擅长局部探索复杂的光路
+
+#### 核心思想
+- 局部扰动现有路径以获得新路径
+
+#### 优点
+- 适用于复杂的光路
+- 也是无偏光
+
+#### 缺点
+- 难以估算收敛率
+- 无法保证每个像素的收敛率相等
+- 因此，通常会产生“脏”结果
+- 因此，通常不用于渲染动画
+
+### 光子映射 Photon Mapping
+- 偏向方法 & 两阶段方法
+- 非常擅长处理镜面-漫反射-镜面 (SDS) 路径并生成焦散
+
+#### 方法
+- 第一阶段——光子追踪
+  - 从光源发射光子，使其四处反射，然后记录漫反射表面上的光子
+- 第二阶段 — 光子收集（最终聚集）
+  - 从相机发射子路径，使其四处弹跳，直到它们撞击漫反射表面
+
+#### 计算 - 局部密度估计
+- 思路：光子较多的区域应该更亮
+- 对于每个着色点，找到最近的 N 个光子。取它们覆盖的表面积
+
+- 为什么会有偏差？
+- 局部密度估计 dN / dA != ΔN / ΔA
+- 但在极限意义上
+  - 发射更多光子 ->
+  - 相同的 N 个光子覆盖更小的 ΔA ->
+  - ΔA 更接近 dA
+- 因此，虽然有偏差，但结果一致！
+
+更容易理解渲染中的偏差
+- 偏差 == 模糊
+- 一致 == 无限采样情况下不模糊
+
+为什么不使用“常量范围”搜索来估计密度？
+
+### 顶点连接与合并 Vertex Connection and Merging
+BDPT 与光子映射的结合
+
+#### 核心思想
+- 如果 BDPT 中的子路径的端点无法连接但可以合并，则不要浪费它们
+- 使用光子映射来处理相邻“光子”的合并。
+
+### 即时辐射度 (IR)
+有时也称为多光源方法
+
+核心思想
+- 受光表面可视为光源
+
+方法
+- 发射光子路径，并假设每个子路径的终点为虚拟点光源 (VPL)
+- 使用这些 VPL 照常渲染场景
+
+优点：速度快，通常在漫反射场景中效果良好
+
+缺点
+- 当 VPL 靠近着色点时，会出现尖峰
+- 无法处理光泽材质
+
+## 高级外观建模 Advanced Appearance Modeling
+### 非表面模型 Non-surface models
+#### 参与介质 Participating Media
+例如雾或云
+光在穿过参与介质的任何时刻，都可能被（部分）吸收和散射
+使用相位函数描述参与介质中任意点 x 的光散射角分布
+##### 参与介质渲染
+随机选择一个方向进行弹跳
+- 随机选择一个距离进行直线运动
+- 在每个“阴影点”处，连接到光源
+
+#### 毛发/毛皮/纤维 (BCSDF)
+##### 毛发外观 Hair Appearance
+###### Kajiya-Kay Model
+
+###### Marschner Model
+玻璃状圆柱体
+三种光相互作用类型：
+R、TT、TRT
+（R：反射，T：透射）
+
+##### 毛皮外观 Fur Appearance 
+如果作为人类头发渲染，则无法呈现漫射和饱和的外观
+###### 人类头发与动物毛皮
+毛发/毛皮纤维的常见特征
+- 皮层 Cortex
+  - 含有色素
+  - 吸收光线
+- 髓质 Medulla
+  - 结构复杂
+  - 散射光线
+- 角质层 Cuticle
+  - 覆盖有鳞片
+
+毛发/毛皮纤维的区别
+
+髓质的重要性
+
+双圆柱模型 Double Cylinder Model
+- 叶轮 Lobes
+
+#### 颗粒材质 Granular Material
+我们能否避免对所有粒子进行显式建模？
+- 可以，但需要程序化定义
+
+
+
+### 表面模型 Surface models
+#### 半透明材质 (BSSRDF)
+例如：
+透光材质-玉石 Translucent Material-Jade
+透光材质-水母 Translucent Material-Jellyfish
+
+##### 次表面散射 Subsurface Scattering
+由于光线入射点与出射点不同，导致许多表面呈现出不同的视觉特征
+- 违反了 BRDF 的一个基本假设
+
+##### 散射函数 Scattering Functions
+BSSRDF：BRDF 的推广；某一点的辐射度
+由另一点的入射微分辐照度引起：
+
+$$
+S(x_i, \mathbf{\omega}_i, x_o, \mathbf{\omega}_o)
+$$
+
+渲染方程的推广：对表面所有点和所有方向进行积分（！）
+
+$$
+L(x_o, \mathbf{\omega}_o) = \int_A \int_{\mathcal{H}^2} S(x_i, \mathbf{\omega}_i, x_o, \mathbf{\omega}_o) \, L_i(x_i, \mathbf{\omega}_i) \cos \theta_i \, d\omega_i \, dA
+$$
+
+
+##### 偶极子近似 Dipole Approximation
+通过引入两个点源来近似光扩散
+
+#### 布料 Cloth
+扭转的纤维集合
+
+两个级别的扭转
+- 纱 Yarn
+- 褶 Ply
+
+机织或针织Woven or knitted
+
+##### 布料渲染为表面
+- 给定编织模式，计算整体行为
+- 使用 BRDF 进行渲染
+
+##### 布料渲染为参与介质
+单根纤维的属性及其分布 -> 散射参数
+- 渲染为参与介质
+
+##### 布料渲染为实际纤维
+显式渲染每根纤维
+
+#### 精细材质（非统计 BRDF）Detailed Appearance
+看起来不现实
+现实世界更加复杂
+
+##### 统计NDF与实际NDF
+##### 定义细节
+法线贴图
+##### 困难路径采样问题
+解决方案：像素上的 BRDF
+
+p-NDF 具有锐化特征
+
+##### 近期趋势：波动光学 Wave Optics
+
+
+### 程序化外观 Procedural appearance
+我们可以不使用纹理来定义细节吗？
+- 是的！动态计算噪声函数
+- 3D 噪声 -> 内部结构（如果被切割或损坏）
+
+```
+if noise(x, y, z) > threshold: 
+ reflectance = 1 
+else: 
+ reflectance = 0
+```
+
+复杂的噪声函数可能非常强大
+
+# 相机、镜头和光场 Cameras, Lenses and Light Fields
+
+成像=合成+捕获
+Imaging = Synthesis + Capture
+
+## 相机 Cameras
+### 相机内部
+- 针孔和透镜在传感器上形成图像
+- 快门使传感器曝光时间精确
+- 传感器在曝光期间累积辐照度
+
+为什么不用无透镜的传感器？
+每个传感器点都会整合来自物体上所有点的光线，因此所有像素值都会相似，也就是说，传感器记录的是辐照度irradiance
+
+### 针孔成像 Pinhole Image Formation
+Mo Tzu (c. 470–c. 390 BC) 
+Aristotle (384–322 BC) 
+Ibn al-Haytham (965–1040)
+Shen Kuo (1031–1095) 
+Roger Bacon (c. 1214–1294) 
+Johannes Kepler (1571–1630)
+
+### 视场 Field of View (FOV)
+焦距对视场的影响
+- 对于固定的传感器尺寸，减小焦距可以增加视野
+
+
+$$
+\text{FOV} = 2 \arctan\left(\frac{h}{2f}\right)
+$$
+
+
+#### 焦距与视场
+由于历史原因，通常用 35mm 格式胶片 (36 x 24mm) 上使用的镜头焦距来表示视角
+
+35mm 格式焦距示例：
+- 17mm 为广角 104°
+- 50mm 为“标准”镜头 47°
+- 200mm 为远摄镜头 12°
+
+注意！当我们说现在的手机焦距大约为 28mm 时，指的是上述约定
+
+#### 传感器尺寸对视场的影响
+#### 传感器尺寸
+#### 在较小的传感器上保持视野
+为了保持视场，要根据传感器的宽度/高度按比例减小镜头的焦距
+
+
+### 曝光 Exposure
+
+$$
+H = T \times E
+$$
+
+
+- 曝光量 = 时间 x 辐照度
+- 曝光时间 (T)
+  - 由快门控制
+- 辐照度 (E)
+  - 照射到传感器单位面积上的光功率
+  - 由镜头光圈和焦距控制
+
+
+#### 摄影中的曝光控制
+光圈大小 Aperture size
+- 通过打开/关闭光圈来更改光圈值（如果相机具有光圈控制功能）
+
+快门速度 Shutter speed
+- 更改传感器像素积分光线的持续时间
+
+ISO 增益 (感光度) ISO gain
+- 更改传感器值和数字图像值之间的放大倍数（模拟和/或数字）
+
+
+##### ISO (增益)
+曝光的第三个变量
+胶片：以感光度换取颗粒感
+数码：以感光度换取噪声
+- 在模拟-数字转换（ADC）之前放大信号
+- 线性效应（ISO 200 所需光量是 ISO 100 的一半）
+
+##### F 值（F 档）：曝光级别 F-Number (F-Stop): Exposure Levels
+写作 FN 或 F/N。N 是 f 值
+非正式理解：圆形光圈的直径倒数
+
+##### 物理快门（1/25 秒曝光）Physical Shutter (1/25 Sec Exposure)
+
+##### 快门速度的作用
+运动模糊：握手、拍摄对象移动
+
+快门时间加倍，运动模糊加倍
+
+注意：运动模糊并不总是坏事！
+提示：考虑抗锯齿
+
+
+滚动快门 Rolling shutter：在不同时间拍摄照片的不同部分
+
+##### 恒定曝光：光圈值与快门速度
+这些光圈和快门速度的组合提供等效曝光
+| F-Stop | Shutter |
+|--------|---------|
+| 1.4    | 1/500   |
+| 2.0    | 1/250   |
+| 2.8    | 1/125   |
+| 4.0    | 1/60    |
+| 5.6    | 1/30    |
+| 8.0    | 1/15    |
+| 11.0   | 1/8     |
+| 16.0   | 1/4     |
+| 22.0   | 1/2     |
+| 32.0   | 1       |
+
+如果曝光过亮/过暗，可能需要调整光圈值和/或快门速度
+
+摄影师必须在景深和运动模糊之间做出权衡，以拍摄移动的物体
+
+#### 快与慢摄影 Fast and Slow Photography
+##### 高速摄影 High-Speed Photography
+正常曝光 = 超快快门速度 x （大光圈 和/或 高ISO）
+##### 长曝光摄影 Long-Exposure Photography
+
+## 镜头 Lenses
+### 薄透镜近似 Thin Lens Approximation
+#### 真实的镜头
+真实的镜头设计非常复杂
+真实镜头元件并不理想——像差
+- 真正的平凸透镜（球面形状）
+- 透镜不会将光线会聚到任何一点
+
+#### 理想薄透镜——焦点
+- 所有进入透镜的平行光线都会通过其焦点
+- 所有通过焦点的光线经过透镜后都将是平行的
+- 焦距可以任意改变（实际上，是的！）
+
+#### 高斯薄透镜方程
+
+$$
+\frac{1}{f} = \frac{1}{z_i} + \frac{1}{z_o}
+$$
+
+### 散焦模糊 Defocus Blur
+计算弥散圆（CoC）大小
+弥散圆与光圈大小成正比
+
+$$
+\frac{C}{A} = \frac{d'}{z_i} = \frac{|z_s - z_i|}{z_i}
+$$
+
+#### 重新审视F值（又称F-Stop）
+正式定义：镜头的 f 值定义为**焦距除以光圈直径**
+
+实际镜头的常见 f 值：
+1.4、2、2.8、4.0、5.6、8、11、16、22、32
+
+f 值 2 有时写作 f/2，这反映了这样一个事实：
+- 绝对光圈直径 (A) 可以通过将焦距 (f) 除以相对光圈 (N) 来计算
+
+
+#### CoC 的大小与 F-Stop 成反比
+
+$$
+C = A \cdot \frac{|z_s - z_i|}{z_i} = \frac{f}{N} \cdot \frac{|z_s - z_i|}{z_i}
+$$
+
+
+
+#### 光线追踪理想薄透镜 Ray Tracing Ideal Thin Lenses
+散焦模糊的光线追踪（薄透镜）
+
+（一种可能的）设置：
+- 选择传感器尺寸、镜头焦距和光圈大小
+- 选择目标景深 zo
+- 根据薄透镜方程计算相应的传感器景深 zi
+
+渲染：
+- 对于传感器（实际上是胶片）上的每个像素 x'
+- 在镜头平面上随机采样 x''
+- 已知穿过镜头的光线会击中 x''
+（由于 x''' 处于焦点，因此将其视为虚拟光线 (x'，镜头中心)）
+- 估算光线 x'' -> x''' 的辐射度
+
+## 光场 Light Fields
+### 景深 Depth of Field
+将弥散圆设为图像平面上允许的最大模糊点，使其在最终观看条件下显得清晰
+
+#### 景深弥散圆
+场景中的深度范围，其中相应的 CoC 被认为足够小
+
+
+#### 景深方程
+
+$$
+\text{DOF} = D_F - D_N
+$$
+
+$$
+D_F = \frac{D_S f^2}{f^2 - N C (D_S - f)}
+$$
+
+$$
+D_N = \frac{D_S f^2}{f^2 + N C (D_S - f)}
+$$
+
+
+
+### 光度计 Lumigraph
+#### 全光函数 The Plenoptic Function
+问：我们所能看见的所有事物的集合是什么？
+答：全光函数（Adelson & Bergen）
+让我们从一个静止的人开始，尝试将他能看到的一切参数化
+##### 灰度快照 Grayscale snapshot
+
+$$
+P(\theta, \phi)
+$$
+
+是光的强度
+- 从单一视角观察
+- 在单一时间点
+- 可见光谱波长的平均值
+（也可以使用 P(x,y)，但球面坐标系更佳）
+
+##### 彩色快照 Color snapshot
+
+$$
+P(\theta, \phi, \lambda)
+$$
+
+是光的强度
+- 从单一视角观察
+- 在单一时间点
+- 作为波长的函数
+
+##### 一部电影 Movie
+
+$$
+P(\theta, \phi, \lambda, t)
+$$
+
+是光的强度
+- 从单一视角观察
+- 随时间变化
+- 作为波长的函数
+
+
+##### 全息电影 Holographic movie
+
+$$
+P(\theta, \phi, \lambda, t, V_x, V_y, V_z)
+$$
+
+是光的强度
+- 从任何角度看
+- 随时间变化
+- 作为波长的函数
+
+##### 全光函数 The Plenoptic Function
+
+$$
+P(\theta, \phi, \lambda, t, V_x, V_y, V_z)
+$$
+
+能够重建每个时刻、每个位置、每个波长下所有可能的视角
+
+包含每张照片、每部电影，以及任何人见过的一切！它完全捕捉了我们的视觉现实！对于一个fXncWion来说，还不错
+
+##### 采样全光功能（顶视图）
+只需查找——Quicktime VR
+
+###### 射线 Ray
+5D
+- 3D位置
+- 2D方向
+
+###### 光线重用 Ray Reuse
+无限线 Infinite line
+- 假设光是恒定的（真空）
+
+4D
+- 二维方向
+- 二维位置
+- 非色散介质
+
+
+仅需要全光面
+
+
+#### 光度计 Lumigraph / Lightfield
+斯坦福相机阵列 Stanford camera array
+##### 整体成像 Integral Imaging
+使用微透镜进行空间复用光场捕获：
+- 在空间分辨率和角度分辨率之间进行固定的权衡
+
+### 光场相机 Light Field Camera
+#### Lytro光场相机
+Lytro：由加州大学伯克利分校 Ren Ng 教授创立
+微透镜设计
+
+最重要的功能
+- 计算重聚焦
+（拍照后虚拟改变焦距、光圈大小等）
+
+
+原理
+- 每个像素（辐照度）现在存储为一个像素块（辐照度）
+- 拍摄照片的特写视图
+
+如何从光场照片中获取“常规”照片？
+- 简单示例——始终选择每个块底部的像素
+- 然后是中心像素和顶部像素
+- 本质上是“移动相机”
+
+计算/数字重新聚焦
+- 相同思路：视觉上改变焦距，并相应地选择重新聚焦的光线方向
+
+总而言之，所有这些功能之所以可用，是因为
+- 光场包含一切
+
+##### 光场相机存在的问题
+- 空间分辨率不足
+（使用同一块胶片来获取空间和方向信息）
+- 成本高
+（微透镜的设计复杂）
+- 计算机图形学需要权衡利弊
+
+
+# 颜色和感知 Color and Perception
+## 颜色 Color 
+### 颜色的物理基础 Physical Basis of Color
+#### 光的基本成分
+- 牛顿证明，阳光可以通过棱镜细分成彩虹
+- 由此产生的光线无法通过第二个棱镜进一步细分
+
+#### 可见光谱 The Visible Spectrum of Light
+电磁辐射
+- 不同频率（波长）的振荡
+
+#### 光谱功率密度 Spectral Power Distribution (SPD)
+光测量中的显著特性
+- 各波长的光量
+- 单位：
+  - 辐射单位/纳米（例如：瓦/纳米）
+  - 也可以无单位
+- 当绝对单位不重要时，通常使用缩放至最大波长的“相对单位”进行跨波长比较
+
+##### 日光光谱功率分布各异
+##### 光源的光谱功率分布
+描述波长的能量分布
+
+##### 光谱功率分布的线性度
+
+#### 什么是颜色
+- 颜色是人类感知的一种现象；它并非光的普遍属性
+- 不同波长的光并非“颜色”
+
+## 色彩感知 Color perception 
+### 颜色的生物学基础 Biological Basis of Color
+#### 人眼的解剖学
+##### 视网膜感光细胞：视杆细胞和视锥细胞
+Retinal Photoreceptor Cells: Rods and Cones
+视杆细胞是极弱光（“暗视”条件）下的主要受体，例如昏暗的月光
+- 眼内约有1.2亿个视杆细胞
+- 仅感知灰色，无颜色
+
+视锥细胞是典型光照水平（“明视”）下的主要受体
+- 眼内约有600-700万个视锥细胞
+- 三种类型的视锥细胞，每种都有不同的光谱敏感度
+- 提供颜色感知
+
+##### 人类视锥细胞的光谱响应
+人类眼睛中有三种类型的视锥细胞，分别对不同波长范围的光敏感，构成了三色视觉系统：
+- S锥细胞（Short-wavelength）：主要响应蓝光（大约 420 nm）
+- M锥细胞（Medium-wavelength）：主要响应绿光（大约 530 nm）
+- L锥细胞（Long-wavelength）：主要响应红光（大约 560 nm）
+
+三种视锥细胞类型的比例差异很大
+
+12位色觉正常的不同人群视网膜中心凹边缘视锥细胞的分布。注意不同类型视锥细胞的百分比差异很大（假彩色图像）
+
+### 色彩三刺激理论 Tristimulus Theory of Color
+#### 人类视锥细胞的光谱响应
+现在我们有三个探测器（S、M、L 视锥细胞），每个都有不同的光谱响应曲线
+
+$$
+S = \int I(\lambda) R_S(\lambda) \, d\lambda \\
+M = \int I(\lambda) R_M(\lambda) \, d\lambda \\
+L = \int I(\lambda) R_L(\lambda) \, d\lambda
+$$
+
+
+#### 人类视觉系统
+- 人眼无法测量，大脑也无法接收关于每种光波长的信息
+- 相反，眼睛“看到”的只有三个响应值（S、M、L），而这只是大脑可用的信息。
+
+### 同色异谱现象 Metamerism
+#### 同色异谱体 Metamers
+同色异谱是指两个不同的光谱（∞维），但投射到相同的（S,M,L）（三维）响应
+- 它们在人眼看来具有相同的颜色
+
+同色异谱的存在对于色彩还原至关重要
+- 无需还原真实世界场景的全部光谱
+- 例如：同色异谱仅用三种颜色的像素，就能在显示器上还原真实世界场景的感知颜色
+
+同色异谱现象十分显著
+#### 色彩搭配背后的理论
+
+
+
+## 色彩再现/匹配 Color reproduction / matching 
+### 加色 Additive Color
+给定一组原色光源，每束光都有各自的光谱分布（例如，R、G、B 显示像素）：
+
+$$
+sR(\lambda),\quad sG(\lambda),\quad sB(\lambda)
+$$
+
+调整这些灯的亮度，并将它们加在一起：
+
+$$
+R \cdot sR(\lambda) + G \cdot sG(\lambda) + B \cdot sB(\lambda)
+$$
+
+颜色现在由标量值描述：
+
+$$
+R, G，B
+$$
+
+### CIE RGB配色实验
+与之前的加色配色相同，但原色为单色光（单一波长）
+测试光也是单色光
+
+### CIE RGB配色函数
+对于任何光谱 s，感知颜色都通过以下公式进行匹配，用于缩放 CIE RGB 原色
+
+$$
+R_{\text{CIE RGB}} = \int_{\lambda} s(\lambda)\,\overline{r}(\lambda)\,d\lambda
+$$
+
+$$
+G_{\text{CIE RGB}} = \int_{\lambda} s(\lambda)\,\overline{g}(\lambda)\,d\lambda
+$$
+
+$$
+B_{\text{CIE RGB}} = \int_{\lambda} s(\lambda)\,\overline{b}(\lambda)\,d\lambda
+$$
+
+## 色彩空间 Color space
+### 标准色彩空间 Standard Color Spaces
+标准化 RGB (sRGB)
+- 使特定显示器成为 RGB 标准
+- 其他色彩设备通过校准模拟该显示器
+- 目前已广泛采用
+- 色域 (gamut) 有限
+
+### 通用色彩空间：CIE XYZ
+一组假想的标准色原色 X、Y、Z
+- 不存在满足这些匹配函数的原色
+- Y 为亮度（与颜色无关的亮度）
+
+设计如下：
+- 匹配函数严格为正
+- 涵盖所有可观察颜色
+
+#### 分离亮度、色度
+亮度 Luminance：Y
+色度 Chromaticity：x, y, z，定义为
+
+$$
+x = \frac{X}{X + Y + Z}
+$$
+
+$$
+y = \frac{Y}{X + Y + Z}
+$$
+
+$$
+z = \frac{Z}{X + Y + Z}
+$$
+
+由于 x + y + z = 1，我们只需记录其中两个
+- 通常选择 x 和 y，得到特定亮度 Y 下的 (x, y) 坐标
+
+
+#### CIE色度图 CIE Chromaticity Diagram
+- 色度图边缘周围的纯（饱和）光谱颜色
+- 色度图内部颜色不太纯（去饱和）
+- 色度图的质心为白色（1/3, 1/3）
+
+弯曲的边界
+- 称为光谱轨迹
+- 对应于单色光
+（每个点代表单一波长的纯色）
+
+
+内部的任何颜色都不太纯
+- 即混合色
+
+
+
+### 色域 Gamut
+色域是由一组原色产生的一组色度
+
+不同的色彩空间代表不同的色彩范围
+
+因此，它们具有不同的色域，即它们覆盖色度图上的不同区域
+
+**sRGB** 是互联网上常用的色彩空间
+
+
+
+### 按感知组织的颜色空间 Perceptually Organized Color Spaces
+
+#### HSV 颜色空间（色调-饱和度-色值）HSV Color Space (Hue-Saturation-Value)
+坐标轴对应色彩的艺术特征
+广泛用于“颜色选择器”
+##### 色彩的感知维度
+色相
+- 颜色的“种类”，与属性无关
+- 比色学相关值：主波长
+- 艺术家相关值：所选颜料颜色
+饱和度
+- “色彩度”
+- 比色学相关值：纯度
+- 艺术家相关值：彩色管中颜料的比例
+亮度（或明度）
+- 总光量
+- 比色学相关值：亮度
+- 艺术家相关值：色调较浅，阴影较深
+
+##### CIELAB 空间（又称 L*a*b*）
+一种常用的色彩空间，力求实现感知的一致性
+- L* 表示亮度
+- a* 和 b* 表示对立色对
+- a* 表示红绿色
+- b* 表示蓝黄色
+
+
+###### 互补色理论 Opponent Color Theory
+CIE LAB 中色彩空间维度的神经学基础非常扎实
+- 大脑似乎很早就使用三个轴来编码颜色：
+  - 白 — 黑，红 — 绿，黄 — 蓝
+- 白 — 黑轴代表亮度；其他轴决定色调和饱和度
+
+一个证据：你可以有浅绿色、深绿色、黄绿色或蓝绿色，但你不可能有红绿色
+- 因此红色是绿色的对立面
+- 另一个证据：残像
+
+**Everything is Relative**
+
+#### CMYK：减色色彩空间 A Subtractive Color Space
+##### 减色模型
+- 混合越多，颜色越深
+
+青色Cyan、品红色Magenta、黄色Yellow和 基色Key 广泛用于印刷
+
+问题：
+- 如果混合 C、M 和 Y 得到 K，那么为什么需要 K？
+
+
+# 动画 Animation
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
