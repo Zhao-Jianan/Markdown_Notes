@@ -549,19 +549,24 @@ nn.Softmax
 ##### 原理
 - 固定小批量里面的均值和方差
 
+
 $$
 \mu_B = \frac{1}{|B|} \sum x_i
 $$
+
 
 $$
 \sigma_B^2 = \frac{1}{|B|} \sum (x_i - \mu_B)^2 + \epsilon
 $$
 
+
 - 然后再做额外的调整(可学习的参数)
+
 
 $$
 x_{i+1} = \gamma \frac{x_i - \mu_B}{\sigma_B} + \beta
 $$
+
 
 其中γ是方差，β是均值
 

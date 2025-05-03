@@ -832,7 +832,10 @@ v进制码元情况下，理想低通信道下的极限数据传输率=2Wlog2 v 
 
 信道的极限信息传输速率C可表达为
 
-$$ C = W \log_2 \left( 1 + \frac{S}{M} \right) \quad \text{(bit/s)} $$
+$$
+C = W \log_2 \left( 1 + \frac{S}{M} \right) \quad \text{(bit/s)}
+$$
+
 
 其中
 - W: 信道的带宽（Hz）
@@ -1026,16 +1029,25 @@ $$ C = W \log_2 \left( 1 + \frac{S}{M} \right) \quad \text{(bit/s)} $$
 - 正交：向量 S 和 T 的规格化内积 (inner product) 等于 0 
 
 
-$$ S \cdot T = \frac{1}{m} \sum_{i=1}^{m} S_i T_i = 0 $$
+$$
+S \cdot T = \frac{1}{m} \sum_{i=1}^{m} S_i T_i = 0
+$$
+
 
 - 任何一个码片向量和该码片向量自己的规格化内积都是1
 
-$$ S \cdot S = \frac{1}{m} \sum_{i=1}^{m} S_i S_i = \frac{1}{m} \sum_{i=1}^{m} S_i^2 = \frac{1}{m} \sum_{i=1}^{m} (\pm 1)^2 = 1 $$
+
+$$
+S \cdot S = \frac{1}{m} \sum_{i=1}^{m} S_i S_i = \frac{1}{m} \sum_{i=1}^{m} S_i^2 = \frac{1}{m} \sum_{i=1}^{m} (\pm 1)^2 = 1
+$$
 
 
 - 一个码片向量和该码片反码的向量的规格化内积值是–1
 
-$$ S \cdot S = -1 $$
+
+$$
+S \cdot S = -1
+$$
 
 
 ## 使用广播信道的数据链路层
@@ -1397,7 +1409,10 @@ CDMA的关键在于：能够提取出需要的信号，同时拒绝所有其它�
 #### 比特率
 比特率（位传输率、数据传输速率、数字带宽）与波特率的关系是：
 
-$$C = B \times \log_2 n$$
+$$
+C = B \times \log_2 n
+$$
+
 
 其中:
 - C：比特率
