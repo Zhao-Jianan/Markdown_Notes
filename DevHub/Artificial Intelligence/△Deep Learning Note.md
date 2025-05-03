@@ -42,19 +42,23 @@ x[::3, ::2]
 ## 线性代数
 ### 标量
 #### 简单操作
+
 $$
 c = a + b
 $$
 
+
 $$
 c = a \cdot b
 $$
+
 
 $$
 c = \sin a
 $$
 
 #### 长度
+
 $$
 |a| =
 \begin{cases} 
@@ -63,9 +67,11 @@ a, & \text{if } a > 0 \\
 \end{cases}
 $$
 
+
 $$
 |a + b| \leq |a| + |b|
 $$
+
 
 $$
 |a \cdot b| = |a| \cdot |b|
@@ -73,49 +79,60 @@ $$
 
 ### 向量
 #### 简单操作
+
 $$
 c = a + b \quad \text{where} \quad c_i = a_i + b_i
 $$
 
+
 $$
 c = \alpha \cdot b \quad \text{where} \quad c_i = \alpha \cdot b_i
 $$
+
 
 $$
 c = \sin a \quad \text{where} \quad c_i = \sin a_i
 $$
 
 #### 长度
+
 $$
 \|a\|_2 = \left[ \sum a_i^2 \right]^{\frac{1}{2}}
 $$
+
 
 $$
 \|a\| \geq 0 \quad \text{for all } a
 $$
 
+
 $$
 \|a + b\| \leq \|a\| + \|b\|
 $$
+
 
 $$
 \|a \cdot b\| = |a| \cdot \|b\|
 $$
 
+
 $$
 c = a + b
 $$
+
 
 $$
 c = \alpha \cdot b
 $$
 
 ##### 点乘
+
 $$
 a^T b = \sum a_i b_i
 $$
 
 ##### 正交
+
 $$
 a^T b = \sum a_i b_i = 0
 $$
@@ -123,13 +140,16 @@ $$
 
 ### 矩阵
 #### 简单操作
+
 $$
 C = A + B \quad \text{where} \quad C_{ij} = A_{ij} + B_{ij}
 $$
 
+
 $$
 C = \alpha \cdot B \quad \text{where} \quad C_{ij} = \alpha \cdot B_{ij}
 $$
+
 
 $$
 C = \sin A \quad \text{where} \quad C_{ij} = \sin A_{ij}
@@ -137,16 +157,19 @@ $$
 
 #### 乘法
 ##### 矩阵乘以向量
+
 $$
 c = A b \quad \text{where} \quad c_i = \sum_j A_{ij} b_j
 $$
 
 ##### 矩阵乘以矩阵
+
 $$
 C = A B \quad \text{where} \quad C_{ik} = \sum_j A_{ij} B_{jk}
 $$
 
 #### 范数
+
 $$
 c = A \cdot b \quad \text{hence} \quad \|c\| \leq \|A\| \cdot \|b\|
 $$
@@ -155,40 +178,47 @@ $$
 ##### 常见范数
 ###### 矩阵范数：最小的满足上面公式的值
 ###### Frobenius范数
+
 $$
 \|A\|_{\text{Frob}} = \left[ \sum_{i,j} A_{ij}^2 \right]^{\frac{1}{2}}
 $$
 
 #### 特殊矩阵
 ##### 对称和反对称
-1. **对称矩阵（Symmetric Matrix）**：  
-   $$
-   A_{ij} = A_{ji}, \quad \forall i, j
-   $$
+1. **对称矩阵（Symmetric Matrix）**： 
 
-2. **反对称（斜对称）矩阵（Skew-Symmetric Matrix）**：  
-   $$
-   A_{ij} = -A_{ji}, \quad \forall i, j
-   $$
+$$
+A_{ij} = A_{ji}, \quad \forall i, j
+$$
+
+2. **反对称（斜对称）矩阵（Skew-Symmetric Matrix）**： 
+
+$$
+A_{ij} = -A_{ji}, \quad \forall i, j
+$$
 
 ##### 正定
+
 $$
 \|x\|_2^2 = x^T x \geq 0 \quad \Longrightarrow \quad x^T A x \geq 0
 $$
 
 ##### 正交矩阵
 - 所有行都相互正交
-- 所有行都有单位长度  
+- 所有行都有单位长度
+
 $$
 \sum_j \Sigma U_{ij} U_{kj} = \delta_{ik}
 $$
 
-- 可以写成  
+- 可以写成 
+
 $$
 U U^T = I
 $$
 
 ##### 置换矩阵
+
 $$
 P_{ij} =
 \begin{cases}
@@ -227,9 +257,11 @@ $$
 ### 梯度
 将导数拓展到向量
 #### ∂y/∂X
+
 $$
 X = \begin{bmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{bmatrix}
 $$
+
 
 $$
 \frac{\partial y}{\partial X} =
@@ -253,9 +285,11 @@ $$
 
 
 #### ∂Y/∂x
+
 $$
 Y = \begin{bmatrix} y_1 \\ y_2 \\ \vdots \\ y_m \end{bmatrix}
 $$
+
 
 $$
 \frac{\partial Y}{\partial x} =
@@ -271,13 +305,16 @@ $$
 ##### 这个被称为分子布局符号，反过来的版本叫分母布局符号
 
 #### ∂Y/∂X
+
 $$
 X = \begin{bmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{bmatrix}
 $$
 
+
 $$
 Y = \begin{bmatrix} y_1 \\ y_2 \\ \vdots \\ y_m \end{bmatrix}
 $$
+
 
 $$
 \frac{\partial Y}{\partial X} = 
@@ -306,35 +343,46 @@ $$
 
 ## 链式法则
 ### 标量链式法则
+
 $$
 y = f(u), \quad u = g(x)
 $$
+
 
 $$
 \frac{\partial y}{\partial x} = \frac{\partial y}{\partial u} \cdot \frac{\partial u}{\partial x}
 $$
 
 ### 向量链式法则
+
 $$
 \frac{\partial y}{\partial X} = \frac{\partial y}{\partial u} \cdot \frac{\partial u}{\partial X}
 $$
-\[
+
+
+$$
 (1, n) \quad (1, ) \quad (1, n)
-\]
+$$
+
 
 $$
 \frac{\partial y}{\partial X} = \frac{\partial y}{\partial U} \cdot \frac{\partial U}{\partial X}
 $$
-\[
+
+
+$$
 (1, n) \quad (1, k) \quad (k, n)
-\]
+$$
+
 
 $$
 \frac{\partial Y}{\partial X} = \frac{\partial Y}{\partial U} \cdot \frac{\partial U}{\partial X}
 $$
-\[
+
+
+$$
 (m, n) \quad (m, k) \quad (k, n)
-\]
+$$
 
 
 ## 自动求导
@@ -355,16 +403,19 @@ $$
 
 ### 自动求导的两种模式
 #### 链式法则
+
 $$
 \frac{\partial y}{\partial x} = \frac{\partial y}{\partial u_n} \cdot \frac{\partial u_n}{\partial u_{n-1}} \cdot \dots \cdot \frac{\partial u_2}{\partial u_1} \cdot \frac{\partial u_1}{\partial x}
 $$
 
 #### 正向积累
+
 $$
 \frac{\partial y}{\partial x} = \frac{\partial y}{\partial u_n} \left( \frac{\partial u_n}{\partial u_{n-1}} \left( \dots \left( \frac{\partial u_2}{\partial u_1} \cdot \frac{\partial u_1}{\partial x} \right) \right) \right)
 $$
 
 #### 反向积累，又称反向传递
+
 $$
 \frac{\partial y}{\partial x} = \left( \left( \frac{\partial y}{\partial u_n} \cdot \frac{\partial u_n}{\partial u_{n-1}} \right) \dots \frac{\partial u_2}{\partial u_1} \right) \cdot \frac{\partial u_1}{\partial x}
 $$
@@ -385,22 +436,23 @@ O(n),因为需要存储正向的所有中间结果
 - O(1) 内存复杂度
 
 
-
-
 # 线性神经网络
 ## 线性回归
 ### 定义
 给定 n 维输入
+
 $$
 X = \begin{bmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{bmatrix}
 $$
 
 线性模型有一个 n 维权重和一个标量偏差 
+
 $$
 W = \begin{bmatrix} w_1 \\ w_2 \\ \vdots \\ w_n \end{bmatrix}, \quad b
 $$
 
 输出是输入的加权和 
+
 $$
 y = w_1 x_1 + w_2 x_2 + \dots + w_n x_n + b
 $$
@@ -433,9 +485,11 @@ $$
 - 通常越多越好 
 - 假设有n个样本,记  
 
+
 $$
 X = \begin{bmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{bmatrix}
 $$
+
 
 $$
 y = \begin{bmatrix} y_1 \\ y_2 \\ \vdots \\ y_n \end{bmatrix}
@@ -451,6 +505,7 @@ $$
 
 
 最小化损失来学习参数
+
 $$
 w^*, b^* = \arg \min l(X, y, w, b)
 $$
@@ -458,19 +513,23 @@ $$
 
 ### 显示解
 将偏差加入权重
+
 $$
 X \leftarrow \begin{bmatrix} X \\ 1 \end{bmatrix}, \quad w \leftarrow \begin{bmatrix} w \\ b \end{bmatrix}
 $$
 
+
 $$
 l(X, y, w) = \frac{1}{2n} \|y - Xw\|^2
 $$
+
 
 $$
 \frac{\partial}{\partial w} l(X, y, w) = \frac{1}{n} (y - Xw)^T X
 $$
 
 损失是凸函数,所以最优解满足
+
 $$
 \frac{\partial}{\partial w} l(X, y, w) = 0
 $$
@@ -483,9 +542,12 @@ $$
 - 挑选一个初始值w_0
 - 重复迭代参数 t=1,2,3 
 
+
 $$
 W_t = W_{t-1} - \eta \frac{\partial}{\partial W_{t-1}}
 $$
+
+
 - 沿梯度方向将增加损失函数值 
 #### 学习率
 步长的超参数
@@ -499,6 +561,7 @@ $$
   - 一个深度神经网络模型可能需要数分钟至数小时
 
 我们可以随机采样 b 个样本i_1, i_2,..., i_b来近似损失 
+
 $$
 \frac{1}{b} \sum l(X_i, y_i, W)
 $$
@@ -541,6 +604,7 @@ $$
 y = \begin{bmatrix} y_1 \\ y_2 \\ \vdots \\ y_n \end{bmatrix}
 $$
 
+
 $$
 y_i = \begin{cases} 
 1 & \text{if } i = y \\
@@ -550,6 +614,7 @@ $$
 
 #### 使用均方损失训练 
 #### 最大值最为预测
+
 $$
 \hat{y} = \arg\max O_i
 $$
@@ -558,11 +623,13 @@ $$
 ### 无校验比例
 #### 对类别进行一位有效编码 
 #### 最大值最为预测
+
 $$
 \hat{y} = \arg\max O_i
 $$
 
 #### 需要更置信的识别正确类(大余量)
+
 $$
 O_y - O_i \geq \Delta(y, i)
 $$
@@ -570,9 +637,11 @@ $$
 
 ### 校验比例
 #### 输出匹配概率(非负,和为 1)
+
 $$
 \hat{y} = \text{softmax}(O)
 $$
+
 
 $$
 \hat{y}_i = \frac{\exp(O_i)}{\sum_k \exp(O_k)}
@@ -582,16 +651,19 @@ $$
 
 ### 交叉熵损失
 #### 交叉熵常用来衡量两个概率的区别
+
 $$
 H(p, q) = - \sum p_i \log(q_i)
 $$
 
 #### 将它作为损失
+
 $$
 l(y, \hat{y}) = - \sum y_i \log(\hat{y}_i) = - \log(\hat{y}_y)
 $$
 
 #### 其梯度是真实概率和预测概率的区别
+
 $$
 \frac{\partial}{\partial O_i} l(y, \hat{y}) = \text{softmax}(O)_i - y_i
 $$
@@ -599,16 +671,19 @@ $$
 
 ## 损失函数
 ### L2 Loss
+
 $$
 l(y, y') = \frac{1}{2}(y - y')^2
 $$
 
 ### L1 Loss
+
 $$
 l(y, y') = |y - y'|
 $$
 
 ### Huber's Robust Loss
+
 $$
 l(y, y') = 
 \begin{cases}
@@ -629,9 +704,12 @@ $$
 
 ### 算法定义
 给定输入x，权重w，和偏移b，感知机输出
+
 $$
 o = \sigma(\langle w, x \rangle + b)
 $$
+
+
 
 $$
 \sigma(x) = 
@@ -649,18 +727,27 @@ $$
 ### 收敛定理
 - 数据在半径r内 
 - 余量ρ分类两类
+
+
 $$
 y(\mathbf{x}^T w + b) \geq \rho
 $$
+
+
 
 $$
 \text{subject to } \|w\|^2 + b^2 \leq 1
 $$
 
+
 - 感知机保证在
+
+
 $$
 \frac{r^2 + 1}{\rho^2}
 $$
+
+
 步后收敛
 
 ### XOR 问题 (Minsky & Papert, 1969)
@@ -675,6 +762,7 @@ $$
 
 ### Sigmoid 激活函数
 将输入投影到 (0, 1), 是一个软的
+
 $$
 \sigma(x) =
 \begin{cases}
@@ -684,6 +772,7 @@ $$
 $$
 
 #### 公式
+
 $$
 \sigma(x) = \frac{1}{1 + \exp(-x)}
 $$
@@ -692,6 +781,7 @@ $$
 ### Tanh 激活函数
 将输入投影到 (-1, 1)
 #### 公式
+
 $$
 \tanh(x) = \frac{1 - \exp(-2x)}{1 + \exp(-2x)}
 $$
@@ -700,12 +790,14 @@ $$
 ### ReLU 激活函数
 ReLU: rectified linear unit
 #### 公式
+
 $$
 \text{ReLU}(x) = \max(x, 0)
 $$
 
 
 ### 多类分类
+
 $$
 y_1, y_2, \dots, y_k = \text{softmax}(o_1, o_2, \dots, o_k)
 $$
@@ -807,6 +899,7 @@ $$
 
 ### 使用均方范数作为柔性限制
 对每个θ,都可以找到λ使得之前的目标函数等价于
+
 $$
 \min l(w,b) + \frac{\lambda}{2} ||w||^2
 $$
@@ -814,9 +907,11 @@ $$
 可以通过拉格朗日乘子来证明
 
 超参数λ控制了正则项的重要程度
+
 $$
 \lambda = 0: \text{无作用}
 $$
+
 
 $$
 \lambda \to \infty, \quad w^* \to 0
@@ -825,11 +920,13 @@ $$
 
 ### 参数更新法则
 #### 计算梯度
+
 $$
 \frac{\partial}{\partial w} \left( l(w, b) + \frac{\lambda}{2} ||w||^2 \right) = \frac{\partial l(w, b)}{\partial w} + \lambda w
 $$
 
 #### 时间 t 更新参数
+
 $$
 w_{t+1} = (1 - \eta \lambda) w_t - \eta \frac{\partial l(w_t, b_t)}{\partial w_t}
 $$
@@ -852,11 +949,13 @@ $$
 ### 无偏差的加入噪音
 - 对x加入噪音得到x',我们希望 
 
+
 $$
 E[x'] = x
 $$
 
 - 丢弃法对每个元素进行如下扰动
+
 
 $$
 x'_i = 
@@ -869,17 +968,21 @@ $$
 
 ### 使用丢弃法
 通常将丢弃法作用在隐藏全连接层的输出上
+
 $$
 h = \sigma(W_1x + b_1)
 $$
+
 
 $$
 h' = \text{dropout}(h)
 $$
 
+
 $$
 o = W_2h' + b_2
 $$
+
 
 $$
 y = \text{softmax}(o)
@@ -889,6 +992,8 @@ $$
 ### 推理中的丢弃法
 - 正则项只在训练中使用，他们影响模型参数的更新 
 - 在推理过程中,丢弃法直接返回输入
+
+
 $$
 h' = \text{dropout}(h)
 $$
@@ -899,15 +1004,18 @@ $$
 ## 数值稳定性
 ### 神经网络的梯度
 考虑如下有 d 层的神经网络
+
 $$
 h_t = f_t(h_{t-1})
 $$
+
 
 $$
 y = l \circ f_d \circ \dots \circ f_1(x)
 $$
 
 计算损失l关于参数W_t的梯度
+
 $$
 \frac{\partial l}{\partial W_t} = \frac{\partial l}{\partial h_d} \frac{\partial h_d}{\partial h_{d-1}} \dots \frac{\partial h_{t+1}}{\partial h_t} \frac{\partial h_t}{\partial W_t}
 $$
@@ -963,25 +1071,34 @@ ResNet, LSTM
 
 ### Xavier 初始化
 难以需要满足
+
 $$
 n_{t-1} \gamma_t = 1
 $$
+
 和
+
 $$
 n_t \gamma_t = 1
 $$
 
 Xavier 使得
+
 $$
 \frac{\gamma_t (n_{t-1} + n_t)}{2} = 1 \quad \Rightarrow \quad \gamma_t = 2(n_{t-1} + n_t)
 $$
 
-- 正态分布 
+- 正态分布
+
+
 $$
 N\left(0, \sqrt{\frac{2}{n_{t-1} + n_t}}\right)
 $$
 
-- 均匀分布 
+
+- 均匀分布
+
+
 $$
 u\left(-\sqrt{\frac{6}{n_{t-1} + n_t}}, \sqrt{\frac{6}{n_{t-1} + n_t}}\right)
 $$
@@ -1208,11 +1325,16 @@ for (i=0; i<a.size(); i++) {
 ### 重新考察全连接层
 - 将输入和输出变形为矩阵(宽度,高度)
 - 将权重变形为4-D张量(h, w)到(h', w')
+
+
 $$
 h_{i,j} = \sum_{k,l} (w_{i,j,k,l} x_{k,l}) = \sum_{a,b} (v_{i,j,a,b} x_{i+a,j+b})
 $$
 
+
 - V 是 W 的重新索引
+
+
 $$
 v_{i,j,a,b} = w_{i,j,i+a,j+b}
 $$
@@ -1220,6 +1342,7 @@ $$
 
 ### 原则 #1 - 平移不变性
 x 的平移导致 h 的平移
+
 $$
 h_{i,j} = \sum_{a,b} v_{i,j,a,b} x_{i+a,j+b}
 $$
@@ -1227,9 +1350,11 @@ $$
 v不应该依赖于(i,j) 
 
 解决方案
+
 $$
 v_{i,j,a,b} = v_{a,b}
 $$
+
 
 $$
 h_{i,j} = \sum_{a,b} v_{a,b} x_{i+a,j+b}
@@ -1238,15 +1363,18 @@ $$
 这就是2维交叉相关,即2维卷积
 
 ### 原则 #2 - 局部性
+
 $$
 h_{i,j} = \sum_{a,b} v_{a,b} x_{i+a,j+b}
 $$
 
 #### 当评估h_i,j时,我们不应该用远离x_i,j的参数
 #### 解决方案
+
 $$
 \text{When } |a|, |b| > \Delta, \text{ set } v_{a,b} = 0
 $$
+
 
 $$
 h_{i,j} = \sum_{a,b} v_{a,b} x_{i+a,j+b}
@@ -1258,24 +1386,29 @@ $$
 
 ### 二维卷积层
 输入
+
 $$
 X: n_h \times n_w
 $$
 
 核 
+
 $$
 W: k_h \times k_w
 $$
 
 偏差 
+
 $$
 b \in \mathbb{R}
 $$
 
 输出
+
 $$
 Y: (n_h - k_h + 1) \times (n_w - k_w + 1)
 $$
+
 
 $$
 Y = X \star W + b
@@ -1285,11 +1418,13 @@ W 和 b 是可学习的参数
 
 ### 交叉相关 vs 卷积
 二维交叉相关
+
 $$
 y_{i,j} = \sum \sum w_{a,b} x_{i+a,j+b}
 $$
 
 二维卷积
+
 $$
 y_{i,j} = \sum \sum w_{-a,-b} x_{i+a,j+b}
 $$
@@ -1298,6 +1433,7 @@ $$
 
 ### 一维和三维交叉相关
 一维
+
 $$
 y_i = \sum w_a x_{i+a}
 $$
@@ -1309,6 +1445,7 @@ $$
 
 
 三维
+
 $$
 y_{i,j,k} = \sum \sum \sum w_{a,b,c} x_{i+a,j+b,k+c}
 $$
@@ -1336,24 +1473,35 @@ $$
   - 第1层得到输出大小 28 x 28 
   - 第7层得到输出大小4 x 4 
 - 更大的卷积核可以更快地减小输出大小 
-  - 形状从n_h × n_w减少到 
+  - 形状从n_h × n_w减少到
+
+
 $$
 (n_h - k_h + 1) \times (n_w - k_w + 1)
 $$
 
+
 - 在输入周围添加额外的行 / 列
 - 填充p_h行和p_w列,输出形状为
+
+
 $$
 (n_h - k_h + p_h + 1) \times (n_w - k_w + p_w + 1)
 $$
 
-- 通常取 
+
+- 通常取
+
+
 $$
 p_h = k_h - 1, \quad p_w = k_w - 1
 $$
 
+
   - 当k_h为奇数:在上下两侧填充p_h/2
   - 当k_h为偶数:在上侧填充「p_h/2|，在下侧填充 |ph/2」
+
+
 $$
 \text{Top padding} = \left\lceil \frac{p_h}{2} \right\rceil, \quad \text{Bottom padding} = \left\lfloor \frac{p_h}{2} \right\rfloor
 $$
@@ -1368,15 +1516,18 @@ $$
   - 例:高度3 宽度2 的步幅
 
 给定高度s_h和宽度s_w的步幅,输出形状是
+
 $$
 \left\lfloor \frac{n_h - k_h + p_h + s_h}{s_h} \right\rfloor \times \left\lfloor \frac{n_w - k_w + p_w + s_w}{s_w} \right\rfloor
 $$
 
 
-如果 
+如果
+
 $$
 p_h = k_h - 1, \quad p_w = k_w - 1
 $$
+
 
 $$
 \left\lfloor \frac{n_h + s_h - 1}{s_h} \right\rfloor \times \left\lfloor \frac{n_w + s_w - 1}{s_w} \right\rfloor
@@ -1384,6 +1535,7 @@ $$
 
 
 如果输入高度和宽度可以被步幅整除
+
 $$
 \frac{n_h}{s_h} \times \frac{n_w}{s_w}
 $$
@@ -1403,17 +1555,23 @@ $$
 - 每个通道都有一个卷积核,结果是所有通道卷积结果的和
 
 输入
+
 $$
 X: c_i \times n_h \times n_w
 $$
+
 核
+
 $$
 W: c_i \times k_h \times k_w
 $$
+
 输出
+
 $$
 Y: m_h \times m_w
 $$
+
 
 $$
 Y = \sum X_{i,:,:} \star W_{i,: ,:}
@@ -1426,17 +1584,23 @@ $$
 我们可以有多个三维卷积核,每个核生成一个输出通道 
 
 输入
+
 $$
 X: c_i \times n_h \times n_w
 $$
+
 核
+
 $$
 W: c_o \times c_i \times k_h \times k_w
 $$
+
 输出
+
 $$
 Y: c_o \times m_h \times m_w
 $$
+
 
 $$
 Y = X \star W_{i,:,:} \quad \text{for} \quad i = 1, \dots, C_o
@@ -1448,19 +1612,25 @@ $$
 - 输入通道核识别并组合输入中的模式
 
 ### 1 × 1 卷积层
+
 $$
 k_h = k_w = 1
 $$
+
 是一个受欢迎的选择。它不识别空间模式,只是融合通道
 
 相当于输入形状为
+
 $$
 n_h \times n_w \times c_i
 $$
+
 权重为
+
 $$
 c_o \times c_i
 $$
+
 的全连接层
 
 
@@ -1506,15 +1676,18 @@ $$
 
 ### 批量归一化算法
 固定小批量里面的均值和方差
+
 $$
 \mu_B = \frac{1}{|B|} \sum x_i
 $$
+
 
 $$
 (\sigma_B)^2 = \frac{1}{|B|} \sum (x_i - \mu_B)^2 + \epsilon
 $$
 
 然后再做额外的调整
+
 $$
 x_{i+1} = \gamma \frac{x_i - \mu_B}{\sigma_B} + \beta
 $$
@@ -1538,6 +1711,7 @@ $$
 $$
 x_{i+1} = \gamma \frac{x_i - \hat{\mu}_B}{\hat{\sigma}_B} + \beta
 $$
+
 
 - μ_hat_B是随机偏移
 - σ_hat_B是随机缩放
@@ -1687,6 +1861,7 @@ LeNet是早期成功的神经网络
 ### 网络中的网络(NiN)
 #### 全连接层的问题
 ##### 卷积层需要较少的参数
+
 $$
 c_i \times c_o \times k^2
 $$
@@ -1882,10 +2057,13 @@ IoU 用来计算两个框之间的相似度
 - 0 表示无重叠,1 表示重合 
 
 这是 Jacquard 指数的一个特殊情况 
-- 给定两个集合 A 和 B  
+- 给定两个集合 A 和 B 
+
+
 $$
 J(A, B) = \frac{|A \cap B|}{|A \cup B|}
 $$
+
 
 #### 赋予锚框标号
 每个锚框是一个训练样本 
@@ -1937,6 +2115,8 @@ NMS可以合并相似的预测
 #### 生成锚框
 - 对每个像素,生成多个以它为中心的锚框 
 - 给定n个大小s_1, ..., s_n和m个高宽比,那么生成 n+m-1个锚框,其大小和高宽比分别为:  
+
+
 $$
 (s_1, r_1), (s_2, r_1), \dots, (s_n, r_1), (s_1, r_2), \dots, (s_1, r_m)
 $$
@@ -1969,6 +2149,7 @@ $$
 卷积不会增大输入的高宽,通常要么不变、要么减半 
 
 转置卷积则可以用来增大输入高宽  
+
 $$
 Y[i : i + h, j : j + w] \mathrel{+}= X[i, j] \cdot K
 $$
@@ -1977,20 +2158,28 @@ $$
 转置卷积是一种变化了输入和核的卷积,来得到上采样的目的
 #### “转置”含义
 对于卷积  
+
 $$
 Y = X \star W
 $$
 
-- 可以对W构造一个V,使得卷积等价于矩阵乘法  
+
+- 可以对W构造一个V,使得卷积等价于矩阵乘法
+
+
 $$
 Y' = V X'
 $$
 
+
   - 这里Y′, X′ 是Y, X对应的向量版本 
-- 转置卷积则等价于  
+- 转置卷积则等价于
+
+
 $$
 Y' = V^\top X'
 $$
+
 
 - 如果卷积将输入从(h,w)变成了 (h′,w′)
   - 同样超参数的转置卷积则从(h′,w′) 变成 (h,w)
@@ -2020,25 +2209,29 @@ $$
 #### 形状换算
 输入高(宽)为n,核k,填充p,步幅s 
 
-转置卷积  
+转置卷积 
+
 $$
 n' = s n + k - 2p - s
 $$
 
 
-卷积  
+卷积 
+
 $$
 n' = \left\lfloor \frac{n - k - 2p + s}{s} \right\rfloor \Rightarrow n \geq s n' + k - 2p - s
 $$
 
-如果让高宽成倍增加,那么  
+如果让高宽成倍增加,那么
+
 $$
 k = 2p + s
 $$
 
 
 #### 同反卷积的关系
-数学上的反卷积(deconvolution)是指卷积的逆运算   
+数学上的反卷积(deconvolution)是指卷积的逆运算
+   
 $$
 Y = \text{conv}(X, K) \quad \Rightarrow \quad X = \text{deconv}(Y, K)
 $$
