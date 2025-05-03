@@ -174,7 +174,10 @@ $$
 \cos \theta = \frac{\vec{a} \cdot \vec{b}}{\|\vec{a}\| \|\vec{b}\|}
 $$
 
+
 对于单位向量
+
+
 $$
 \cos \theta = \hat{a} \cdot \hat{b}
 $$
@@ -871,6 +874,7 @@ z \\
 $$
 
 使用 4×4 矩阵进行仿射变换
+
 $$
 \begin{pmatrix}
 x' \\
@@ -2347,7 +2351,7 @@ $$
 更新到
 
 $$
-(1 - n \cdot u) \cdot \text{original\_position} + u \cdot \text{neighbor\_position\_sum}
+(1 - n \cdot u) \cdot \text{original\position} + u \cdot \text{neighbor\position\sum}
 $$
 
 #### Catmull-Clark 细分（通用网格）
@@ -3622,7 +3626,7 @@ $$
 S(x_i, \mathbf{\omega}_i, x_o, \mathbf{\omega}_o)
 $$
 
-渲染方程的推广：对表面所有点和所有方向进行积分（！）
+渲染方程的推广：对表面所有点和所有方向进行积分(!)
 
 $$
 L(x_o, \mathbf{\omega}_o) = \int_A \int_{\mathcal{H}^2} S(x_i, \mathbf{\omega}_i, x_o, \mathbf{\omega}_o) \, L_i(x_i, \mathbf{\omega}_i) \cos \theta_i \, d\omega_i \, dA
@@ -4327,6 +4331,7 @@ $$
 \vec{f}_{a \to b} = k_s (\vec{b} - \vec{a})
 $$
 
+
 $$
 \vec{f}_{b \to a} = -\vec{f}_{a \to b}
 $$
@@ -4568,6 +4573,7 @@ $$
 $$
 x_{t+\Delta t} = x_t + \frac{\Delta t}{2} \left( \dot{x}_t + \dot{x}_{t+\Delta t} \right)
 $$
+
 
 其中，
 
