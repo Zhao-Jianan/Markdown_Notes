@@ -361,7 +361,8 @@ jieba.cut()
 指的是某一个给定的词语在该文件中出现的频率
 -  逆向文档频率（inverse document frequency，idf）
 
-是一个词语普遍重要性的度量。某一特定词语的idf，可以由总文件数目除以包含该词语之文件的数目，再将得到的商取以10为底的对数得到  
+是一个词语普遍重要性的度量。某一特定词语的idf，可以由总文件数目除以包含该词语之文件的数目，再将得到的商取以10为底的对数得到
+
 $$
 \text{tfidf}_{i,j} = \text{tf}_{i,j} \cdot \text{idf}_i
 $$
@@ -398,9 +399,12 @@ sklearn.preprocessing
 #### 定义
 通过对原始数据进行变换把数据映射到(默认为[0,1])之间
 #### 公式
+
 $$
 X' = \frac{x - \min}{\max - \min}
 $$
+
+
 $$
 X'' = X' \cdot (\text{mx} - \text{mi}) + \text{mi}
 $$
@@ -430,6 +434,7 @@ numpy array格式的数据[n_samples,n_features]
 #### 定义
 通过对原始数据进行变换把数据变换到均值为0,标准差为1范围内
 #### 公式
+
 $$
 X' = \frac{x - \text{mean}}{\sigma}
 $$
@@ -684,6 +689,7 @@ $$
 ##### 定义
 曼哈顿距离是两点之间在各个维度上绝对差值的和。它也被称为“城市街区距离”或“L1距离”，因为它像是在网格状的街道中走的距离
 ##### 公式
+
 $$
 d(x, y) = \sum |x_i - y_i|
 $$
@@ -697,6 +703,7 @@ $$
 ##### 定义
 明可夫斯基距离是欧氏距离和曼哈顿距离的广义形式，通过引入一个参数p，它可以表示不同的距离度量方法
 ##### 公式
+
 $$
 d(x, y) = \left( \sum |x_i - y_i|^p \right)^{\frac{1}{p}}
 $$
@@ -856,11 +863,17 @@ P(X): 取值在[0, 1]
 ##### 联合概率
 包含多个条件，且所有条件同时成立的概率
 -  记作
+
+
 $$
 P(A, B)
 $$
 
+
+
 -  特性
+
+
 $$
 P(A, B) = P(A) P(B)
 $$
@@ -869,14 +882,21 @@ $$
 ##### 条件概率
 事件A在另外一个事件B已经发生条件下的发生概率
 -  记作
+
+
 $$
 P(A \mid B)
 $$
 
+
+
 -  特性
+
+
 $$
 P(A_1, A_2 \mid B) = P(A_1 \mid B) P(A_2 \mid B)
 $$
+
 
 *注意：此条件概率的成立，是由于A1,A2相互独立的结果*
 
@@ -884,6 +904,7 @@ $$
 
 ### 贝叶斯公式
 #### 公式
+
 $$
 P(C \mid W) = \frac{P(W \mid C) P(C)}{P(W)}
 $$
@@ -892,9 +913,12 @@ $$
 #### 贝叶斯估计
 处理估计条件概率P(X∣Y)时出现概率为0的情况
 ##### 公式
+
 $$
 P(F_1 \mid C) = \frac{N_i + \alpha}{N + \alpha m}
 $$
+
+
 -  α为指定的系数，一般为1，拉普拉斯平滑系数，为1时称为拉普拉斯平滑；为0时，是普通的极大似然估计
 -  m为训练文档中统计出的特征词个数
 ##### 目的
@@ -920,9 +944,11 @@ sklearn.naive_bayes.MultinomialNB(alpha = 1.0)
 为了避免贝叶斯定理求解时面临的组合爆炸、样本稀疏问题
 
 #### 假设条件概率分布为：
+
 $$
 P(X = x \mid Y = c_k) = P(X_1 = x_1, \dots, X_n = x_n \mid Y = c_k)
 $$
+
 
 - 其中xj可能的取值有 $S_j$ 个，$j=1,2,...n$，Y可能取值有K个，那么参数个数为 $K \prod_{j=1}^{n} S_j$ 个，这导致条件概率分布的参数数量为指数级别
 
@@ -1016,6 +1042,7 @@ $$
 \text{Ent}(D) = -\sum \frac{C_k}{D} \log \frac{C_k}{D} = -\sum p_k \log p_k
 $$
 
+
 其中：$\text{Ent}(D)$ 的值越小，则 $D$ 的纯度越高
 
 
@@ -1045,12 +1072,16 @@ $$
 
 ##### 公式的详细解释
 -  信息熵的计算
+
+
 $$
 \text{Ent}(D) = -\sum \frac{C_k}{D} \log \frac{C_k}{D}
 $$
 
 
 -  条件熵的计算
+
+
 $$
 \text{Ent}(D, a) = \sum \frac{D_v}{D} \log D_v = -\sum \frac{D_v}{D} \sum \frac{C_{kv}}{D_v} \log \frac{C_{kv}}{D_v}
 $$
@@ -1075,10 +1106,13 @@ $$
 增益率是用前面的信息增益Gain(D, a)和属性a对应的"固有值"(intrinsic value) [Quinlan , 1993J的比值来共同定义的
 
 #### 公式
+
 $$
 \text{Gain\_ratio}(D, a) = \frac{\text{Gain}(D, a)}{\text{IV}(a)}
 $$
+
 其中
+
 $$
 \text{IV}(a) = -\sum \frac{D_v}{D} \log \frac{D_v}{D}
 $$
@@ -1105,9 +1139,11 @@ CART 是Classification and Regression Tree的简称 ，这是一种著名的决�
 基尼值Gini（D） ：从数据集D中随机抽取两个样本 ，其类别标记不一致的概率。故，Gini（D）值越小 ，数据集D的纯度越高
 
 数据集 D 的纯度可用基尼值来度量
+
 $$
 \text{Gini}(D) = \sum \sum p_k p_k = 1 - \sum p_k^2
 $$
+
 
 -  $P_k=C_k/D$ ,$D$ 为样本的所有数量 ，$C_k$ 为第k类样本的数量
 
@@ -1334,9 +1370,11 @@ integer或None，可选（默认=无）树的最大深度 5,8,15,25,30
 #### 特点
 只有一个自变量的情况称为单变量回归，大于一个自变量情况的叫做多元回归
 #### 通用公式
+
 $$
 h(w) = w_1x_1 + w_2x_2 + w_3x_3 + \dots + b = w^T x + b
 $$
+
 
 - 其中，w，x可以理解为矩阵：$W=(b,w_1,w_2), X=(1,x_1,x_2)$
 
@@ -1349,9 +1387,11 @@ $$
 ### 线性回归的损失函数
 #### 损失函数公式
 总损失定义为
+
 $$
 J(\theta) = \sum (h_w(x_i) - y_i)^2
 $$
+
 
 - y_i为第i个训练样本的真实值
 - h(x_i)为第i个训练样本特征值组合预测函数
@@ -1360,16 +1400,21 @@ $$
 目的是找到最小损失对应的W值  
 线性回归经常使用的两种优化算法
 #### 正规方程
+
 $$
 W = (X^T X)^{-1} X^T y
 $$
 
+
 - X为特征值矩阵，y为目标值矩阵。直接求到最好的结果
 - 缺点：当特征过多过复杂时，求解速度太慢并且得不到结果
 #### 梯度下降(Gradient Descent)
+
 $$
 w_i = w_i - \alpha \frac{\partial \text{cost}}{\partial w_i}
 $$
+
+
 - α为学习速率，需要手动指定（超参数），α旁边的整体表示方向
 - 沿着这个函数下降的方向找，最后就能找到山谷的最低点，然后更新W值
 - 在面对训练数据规模十分庞大的任务 ，能够找到较好的结果
@@ -1403,6 +1448,7 @@ sklearn.linear_model.SGDRegressor(loss="squared_loss", fit_intercept=True, learn
 ### 回归性能评估
 均方误差(Mean Squared Error,MSE)评价机制
 #### 公式
+
 $$
 \text{MSE} = \frac{1}{m} \sum_{i=1}^{m} (y_i - \hat{y}_i)^2
 $$
@@ -1540,6 +1586,7 @@ sklearn.linear_model.RidgeCV(_BaseRidgeCV, RegressorMixin)
 逻辑回归是解决二分类问题的利器
 ### 逻辑回归的原理
 #### 输入
+
 $$
 h(w) = w_1 x_1 + w_2 x_2 + w_3 x_3 + \dots + b
 $$
@@ -1547,6 +1594,7 @@ $$
 逻辑回归的输入就是一个线性回归的结果
 #### 激活函数
 ##### sigmoid函数
+
 $$
 g(\theta^T x) = \frac{1}{1 + e^{-\theta^T x}}
 $$
@@ -1564,6 +1612,7 @@ $$
 #### 损失
 逻辑回归的损失，称之为对数似然损失，公式如下
 ##### 分开类别
+
 $$
 \text{cost}(h_\theta(x), y) =
 \begin{cases} 
@@ -1574,6 +1623,7 @@ $$
 
 
 ##### 综合完整损失函数
+
 $$
 J(\theta) = \sum_{i=1}^{m} \left[ -y_i \log h_\theta(x_i) - (1 - y_i) \log (1 - h_\theta(x_i)) \right]
 $$
@@ -1619,6 +1669,7 @@ LogisticRegression方法相当于 ```SGDClassifier(loss="log", penalty=" ")```,S
 ##### F1-score
 F1-score可以反映模型的稳健性
 ###### 公式
+
 $$
 F_1 = \frac{2TP}{2TP + FN + FP} = \frac{2 \times \text{Precision} \times \text{Recall}}{\text{Precision} + \text{Recall}}
 $$
@@ -1636,14 +1687,17 @@ sklearn.metrics.classification_report(y_true, y_pred, labels=[], target_names=No
 #### ROC曲线与AUC指标
 样本不均衡下的评估问题
 ##### TPR与FPR
+
 $$
 TPR = \frac{TP}{TP + FN}
 $$
+
 所有真实类别为1的样本中，预测类别为1的比例
 
 $$
 FPR = \frac{FP}{FP + TN}
 $$
+
 所有真实类别为0的样本中，预测类别为1的比例
 
 ##### ROC曲线
@@ -1718,6 +1772,7 @@ sklearn.cluster.KMeans(n_clusters=8,init=‘k-means++’)
 
 ### Kmeans性能评估指标
 #### 轮廓系数
+
 $$
 SC_i = \frac{b_i - a_i}{\max(b_i, a_i)}
 $$
