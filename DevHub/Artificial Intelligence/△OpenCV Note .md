@@ -642,30 +642,17 @@ plt.show()
 透射变换的本质将图像投影到一个新的视平面，其通用变换公式为
 
 $$
-\begin{bmatrix} x' & y' & z' \end{bmatrix}
-=
-\begin{bmatrix} u & v & w \end{bmatrix}
-\begin{bmatrix} 
-a_{00} & a_{01} & a_{02} \\ 
-a_{10} & a_{11} & a_{12} \\ 
-a_{20} & a_{21} & a_{22} 
-\end{bmatrix}
+\begin{bmatrix} x' & y' & z' \end{bmatrix} = \begin{bmatrix} u & v & w \end{bmatrix}\begin{bmatrix} a_{00} & a_{01} & a_{02} \\ 
+a_{10} & a_{11} & a_{12} \\ a_{20} & a_{21} & a_{22} \end{bmatrix}
 $$
 
 其中，(u,v)是原始的图像像素坐标，w取值为1，(x=x'/z',y=y'/z')是透射变换后的结果。后面的矩阵称为透视变换矩阵，一般情况下，将其分为三部分
 
 $$
-T =
-\begin{bmatrix} 
-a_{00} & a_{01} & a_{02} \\ 
+T = \begin{bmatrix} a_{00} & a_{01} & a_{02} \\ 
 a_{10} & a_{11} & a_{12} \\ 
-a_{20} & a_{21} & a_{22} 
-\end{bmatrix}
-=
-\begin{bmatrix} 
-T_1 & T_2 \\ 
-T_3 & a_{22} 
-\end{bmatrix}
+a_{20} & a_{21} & a_{22} \end{bmatrix} = \begin{bmatrix} T_1 & T_2 \\ 
+T_3 & a_{22} \end{bmatrix}
 $$
 
 其中,T1表示对图像进行线性变换，T2对图像进行平移，T3表示对图像进行投射变换，a_22一般设为1
