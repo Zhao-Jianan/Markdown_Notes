@@ -36,7 +36,7 @@
 #### 编程语言
 OpenCV基于C++实现，同时提供python, Ruby, Matlab等语言的接口。OpenCV-Python是OpenCV的Python API，结合了OpenCV C++ API和Python语言的最佳特性
 #### 跨平台
-可以在不同的系统平台上使用，包括Windows，Linux，OS X，Android和iOS。基于CUDA和OpenCL的高速GPU操作接口也在积极开发中
+可以在不同的系统平台上使用，包括Windows，Linux，OS X，Android和IOS。基于CUDA和OpenCL的高速GPU操作接口也在积极开发中
 #### 活跃的开发团队
 #### 丰富的API
 完善的传统计算机视觉算法，涵盖主流的机器学习算法，同时添加了对深度学习的支持
