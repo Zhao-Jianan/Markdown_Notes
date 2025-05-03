@@ -4243,32 +4243,551 @@ CIE LAB 中色彩空间维度的神经学基础非常扎实
 
 
 # 动画 Animation
+“赋予事物生命”
+- 沟通工具
+- 美学问题往往主导技术问题
+
+建模的扩展
+- 将场景模型表示为时间函数
+
+输出：按顺序观看时，呈现运动感的图像序列
+- 电影：每秒 24 帧
+- 视频（一般）：每秒 30 帧
+- 虚拟现实：每秒 90 帧
 
 
+## 动画史 History of Animation
+### 第一部动画 First Animation
+Shahr-e Sukhteh, Iran 3200 BCE
+费纳奇镜，1831年 Phenakistoscope, 1831
+
+### 第一部电影 First Film
+最初用作科学工具而非娱乐
+
+加速动画发展的关键技术
+
+爱德华·迈布里奇，《萨莉·加德纳》（1878）
+Edward Muybridge, “Sallie Gardner” (1878)
+
+### 第一部手绘长篇动画（>40分钟）
+迪士尼，《白雪公主和七个小矮人》（1937）
+Disney, “Snow White and the Seven Dwarfs” (1937)
+
+### 首部数字计算机生成动画
+伊凡·萨瑟兰，《Sketchpad》（1963）——光笔，矢量显示
+Ivan Sutherland, “Sketchpad” (1963) – Light pen, vector display
+
+### 早期计算机动画
+艾德·卡特穆尔和弗雷德里克·帕克，《电脑动画人脸》（1972）
+Ed Catmull & Frederick Parke, “Computer Animated Faces” (1972)
+### 第一部 CG 长片
+皮克斯，《玩具总动员》（1995）
+Pixar, “Toy Story” (1995)
+## 关键帧动画 Keyframe animation
+- 动画师（例如首席动画师）创建关键帧
+- 助手（人员或计算机）创建中间帧（“补间”）
+
+### 关键帧插值 Keyframe Interpolation
+将每一帧视为参数值的向量
+#### 各参数关键帧插值
+- 线性插值通常不够好
+- 调用样条曲线实现平滑/可控插值
+
+## 物理模拟 Physical simulation
+### 牛顿定律 Newton’s Law
+
+$$
+F = ma
+$$
+
+### 基于物理的动画 Physically Based Animation
+使用数值模拟生成物体的运动
+
+恒定加速度下的位置更新公式
+
+$$
+x_{t + \Delta t} = x_t + \Delta t \cdot v_t + \frac{1}{2} (\Delta t)^2 a_t
+$$
+
+### 应用
+- 布料模拟 Cloth Simulation
+- 流体 Fluids
+- 质量弹簧网格 Mass Spring Mesh
+
+### 质量弹簧系统：动态系统建模示例
+Mass Spring System: 
+Example of Modeling a Dynamic System
+- 质量弹簧绳 Mass Spring Rope
+- 毛发 Hair
+
+#### 简单弹簧 Simple Spring
+理想化的弹簧
+
+$$
+\vec{f}_{a \to b} = k_s (\vec{b} - \vec{a})
+$$
+
+$$
+\vec{f}_{b \to a} = -\vec{f}_{a \to b}
+$$
+
+力将点拉近
+强度与位移成正比（胡克定律）
+k_s 是弹簧系数：刚度
+
+问题：这个弹簧的长度为零
+
+#### 非零长度弹簧 Non-Zero Length Spring
+静止长度非零的弹簧
+
+$$
+\vec{f}_{a \to b} = k_s \cdot \frac{\vec{b} - \vec{a}}{\|\vec{b} - \vec{a}\|} \left( \|\vec{b} - \vec{a}\| - \ell \right)
+$$
+
+where l is Rest length
+
+问题：永远振荡
+
+导数的点表示法
+如果 x 是表示兴趣点位置的矢量，我们将使用点符号表示速度和加速度：
+
+$$
+x
+$$
+
+$$
+\dot{x} = v
+$$
+
+$$
+\ddot{x} = a
+$$
+
+#### 引入能量损失 Introducing Energy Loss
+简单运动阻尼 Simple motion damping
+
+$$
+\vec{f} = -k_d \vec{b}
+$$
+
+- 对运动产生类似粘性阻力的作用
+- 减慢速度方向上的运动速度
+- kd 是阻尼系数
+
+问题：减慢所有运动
+- 想要减慢生锈弹簧的振动速度，但它也应该以更慢的速度掉落到地面吗？
+
+#### 弹簧内部阻尼 Internal Damping for Spring
+仅抑制内部弹簧驱动的运动
+
+$$
+\vec{f}_a = -k_d \cdot \frac{\vec{b} - \vec{a}}{\|\vec{b} - \vec{a}\|} \left[ \left( \dot{\vec{b}} - \dot{\vec{a}} \right) \cdot \frac{\vec{b} - \vec{a}}{\|\vec{b} - \vec{a}\|} \right]
+$$
 
 
+- 仅当弹簧长度变化时才会产生粘性阻力
+  - 不会减慢弹簧系统的组运动（例如组的整体平移或旋转）
+- 注意：这只是一种特定的阻尼类型
+
+#### 弹簧结构
+- 板状 Sheets 
+- 块状 Blocks 
+- 其他 Others
+
+行为由结构联系决定
 
 
+有限元法 (FEM) 替代弹簧
+
+### 粒子系统 Particle Systems
+#### 粒子系统概念
+将动态系统建模为大量粒子的集合
+
+每个粒子的运动由一组物理（或非物理）力定义
+
+图形和游戏中的流行技术
+- 易于理解和实现
+- 可扩展：速度更快时使用较少粒子，复杂度更高时使用较多粒子
+
+挑战
+- 可能需要大量粒子（例如流体）
+- 可能需要加速结构（例如，为了找到最近的粒子进行相互作用）
+
+#### 粒子系统动画 Particle System Animations
+动画中的每一帧
+- [如果需要] 创建新粒子
+- 计算每个粒子所受的力
+- 更新每个粒子的位置和速度
+- [如果需要] 移除死粒子
+- 渲染粒子
 
 
+#### 粒子系统力 Particle System Forces
+吸引力和排斥力 Attraction and repulsion forces 
+- 重力 Gravity, 电磁力 electromagnetism, … 
+- 弹簧 Springs, 推进力 propulsion, … 
+
+阻尼力 Damping forces 
+- 摩擦力 Friction, 空气阻力 air drag, 粘度 viscosity, … 
+
+碰撞 Collisions 
+- 墙壁 Walls, 容器 containers, 固定物体 fixed objects, … 
+- 动态物体 Dynamic objects, 角色身体部位 character body parts, …
 
 
+#### 引力 Gravitational Attraction
+牛顿万有引力定律
+- 粒子间的引力
+
+$$
+F_g = G \frac{m_1 m_2}{d^2}
+$$
+
+其中，
+
+$$
+G = 6.67428 \times 10^{-11} \ \text{N} \cdot \text{m}^2 \cdot \text{kg}^{-2}
+$$
+
+##### 应用
+星系模拟 Galaxy Simulation
+基于粒子的流体 Particle-Based Fluids
 
 
+#### 模拟群集作为微分方程 Simulated Flocking as an ODE
+将每只鸟建模为一个粒子
+受以下简单力的作用：
+- 邻近粒子中心的吸引力
+- 邻近粒子间的排斥力
+- 沿邻近粒子平均轨迹的轨迹对齐
+
+数值模拟大型粒子系统的演化
+
+涌现的复杂行为（也见于鱼类、蜜蜂等）
+
+##### 应用
+分子动力学 Molecular Dynamics
+人群+“摇滚”动态 Crowds + “Rock” Dynamics
 
 
+### 单粒子模拟 Single particle simulation 
+首先研究单个粒子的运动，然后推广到多个粒子
+首先，假设粒子的运动由速度矢量场决定，该速度矢量场是位置和时间的函数：
+
+$$
+v(x, t)
+$$
+
+#### 常微分方程 Ordinary Differential Equation（ODE）
+##### 计算粒子随时间的位置需要求解一阶常微分方程
+
+$$
+\frac{dx}{dt} = \dot{x} = v(x, t)
+$$
+
+“一阶”指的是求一阶导数
+“普通”指的是没有“偏”导数，也就是说，x 只是 t 的函数
+
+##### 求解粒子位置
+给定初始粒子位置 x_0，我们可以利用前向数值积分来求解微分方程
 
 
+#### 显式欧拉方法 Explicit Euler method 
+欧拉方法（又称前向欧拉法、显式欧拉法）
+- 简单的迭代方法
+- 常用
+- 非常不准确
+- 经常不稳定
+
+$$
+x_{t+\Delta t} = x_t + \Delta t \, \dot{x}_t
+$$
+
+$$
+\dot{x}_{t+\Delta t} = \dot{x}_t + \Delta t \, \ddot{x}_t
+$$
+
+##### 欧拉方法的错误
+数值积分中，误差会累积
+欧拉积分尤其糟糕
+例如：
+
+$$
+x_{t + \Delta t} = x_t + \Delta t \cdot v(x, t)
+$$
+
+#### 不稳定性及改进 Instability and improvements 
+##### 欧拉方法的不稳定性 Instability of the Euler Method
+
+$$
+x_{t + \Delta t} = x_t + \Delta t \cdot v(x, t)
+$$
+
+两个关键问题：
+- 随着时间步长 Δt 的增加，不准确性也会增加
+- 不稳定性是一个常见且严重的问题，可能导致模拟出现偏差
+
+##### 错误和不稳定性 Errors and Instability
+通过有限差分数值积分求解
+会导致两个问题：
+
+###### 误差
+- 每个时间步的误差都会累积。精度会随着模拟的进行而降低
+- 在图形应用中，精度可能并不重要
+
+###### 不稳定性
+- 误差可能会累积，导致模拟出现偏差，即使底层系统没有偏差
+- 缺乏稳定性是模拟中的一个根本问题，不容忽视
+
+#### 应对不稳定 Combating Instability
+一些对抗不稳定性​​的方法
+##### 中点法/修正欧拉法 Midpoint method / Modified Euler
+- 起点和终点的平均速度
+
+###### 中点法
+- 计算欧拉步骤 (a)
+- 计算欧拉步骤中点的导数 (b)
+- 使用中点导数更新位置 (c)
 
 
+$$
+x_{\text{mid}} = x(t) + \frac{\Delta t}{2} \cdot v(x(t), t)
+$$
+
+$$
+x(t + \Delta t) = x(t) + \Delta t \cdot v(x_{\text{mid}}, t)
+$$
 
 
+###### 修正欧拉法 Modified Euler 
+- 步骤开始和结束时的平均速度
+- 更好的结果
+
+梯形积分法：
+
+$$
+x_{t+\Delta t} = x_t + \frac{\Delta t}{2} \left( \dot{x}_t + \dot{x}_{t+\Delta t} \right)
+$$
+
+其中，
+
+$$
+\dot{x}_{t+\Delta t} = \dot{x}_t + \Delta t \, \ddot{x}_t
+$$
+
+---
+
+匀加速解析解（Verlet 风格）：
+
+$$
+x_{t+\Delta t} = x_t + \Delta t \, \dot{x}_t + \frac{(\Delta t)^2}{2} \, \ddot{x}_t
+$$
 
 
+##### 自适应步长 Adaptive step size
+- 递归比较一步和两个半步，直到误差在可接受范围内
+
+自适应步长
+- 基于误差估计选择步长的技术
+- 非常实用的技术
+- 但可能需要非常小的步长！
+重复操作，直到误差低于阈值：
+- 计算 xT，欧拉步长 T
+- 计算 xT/2，欧拉步长 T/2
+- 计算误差 || xT – xT/2 ||
+- 如果 (误差 > 阈值)，则减小步长，并重试
 
 
+##### 隐式方法 Implicit methods
+- 使用下一个时间步的速度（硬）
+
+###### 隐式欧拉方法 Implicit Euler Method
+- 非正式地称为后向方法
+- 对当前步骤使用未来的导数
+
+$$
+x_{t+\Delta t} = x_t + \Delta t \, \dot{x}_{t+\Delta t}
+$$
 
 
+$$
+\dot{x}_{t+\Delta t} = \dot{x}_t + \Delta t \, \ddot{x}_{t+\Delta t}
+$$
+
+
+求解非线性问题
+- 使用求根算法，例如牛顿法
+- 提供更好的稳定性
+
+###### 如何确定/量化“稳定性”？
+- 我们使用局部截断误差（每一步）/ 总累积误差（整体）
+- 绝对值无关紧要，但与步骤相关的阶数很重要
+- 隐式欧拉函数的阶数为 1，这意味着
+  - 局部截断误差：O(h²) 和
+  - 全局截断误差：O(h)（h 为步骤，即 ∆t）
+- 对 O(h) 的理解
+  - 如果我们将 h 减半，我们可以预期误差也会减半
+
+
+###### 龙格-库塔方法族 Runge-Kutta Families
+一系列用于求解微分方程的高级方法
+- 尤其擅长处理非线性问题
+- 其中四阶版本应用最为广泛，又称为 RK4
+
+
+$$
+y_{n+1} = y_n + \Delta t \sum_{i=1}^s b_i k_i
+$$
+
+其中，
+
+$$
+k_i = f\left(t_n + c_i \Delta t, \, y_n + \Delta t \sum_{j=1}^s a_{ij} k_j\right), \quad i = 1, 2, \dots, s
+$$
+
+
+##### 基于位置/Verlet 积分 Position-based / Verlet integration
+- 限制时间步后粒子的位置和速度
+
+###### 思路
+- 改进欧拉前向解法后，限制粒子位置以防止发散和不稳定行为
+- 使用受约束的位置来计算速度
+- 这两种思路都会耗散能量，但会使其稳定
+###### 优点/缺点
+- 快速简便
+- 非物理基础，会耗散能量（误差）
+
+### 刚体模拟 Rigid body simulation 
+简单案例
+- 类似于模拟粒子
+- 只需考虑一些其他属性
+
+### 流体模拟 Fluid simulation
+一种简单的基于位置的方法
+核心思想
+- 假设水由小的刚体球体组成
+- 假设水不能被压缩（即密度恒定）
+- 因此，只要密度在某个地方发生变化，就应该通过改变粒子的位置来“修正”
+- 你需要知道密度相对于每个粒子位置的梯度
+- 更新？只需梯度下降！
+
+#### 欧拉与拉格朗日
+模拟大量物质的两种不同观点
+- 质点法 Lagrangian Method
+- 网格法 Eulerian Method
+
+#### 物质点法 Material Point Method (MPM)
+混合，结合欧拉和拉格朗日观点
+- 拉格朗日：考虑携带物质属性的粒子
+- 欧拉：使用网格进行数值积分
+- 交互：粒子将属性传递给网格，网格进行更新，然后插值回粒子
+
+## 运动学 Kinematics
+### 正向运动学 Forward Kinematics
+铰接式骨架
+- 拓扑结构（各部分连接）
+- 关节的几何关系
+- 树形结构（无环路）
+
+关节类型
+- 销（一维旋转）
+- 球（二维旋转）
+- 平移关节（平移）
+
+
+动画师提供角度，计算机确定末端执行器的位置 p
+动画被描述为角度参数值作为时间的函数
+### 应用
+二维中简单的两段手臂
+步行循环
+
+### 运动学的优缺点
+#### 优点
+- 直接控制方便
+- 实现简单
+#### 缺点
+- 动画可能与物理效果不一致
+- 耗费美术师时间
+
+### 反向运动学 Inverse Kinematics
+动画师提供末端执行器的位置，计算机必须确定满足约束的关节角度
+
+#### 直接逆向运动学（Direct Inverse Kinematics, DIK）
+对于两段式手臂，可以解析地求解参数
+
+为什么这个问题很难？
+- 配置空间中有多个解决方案
+- 解决方案可能并不总是存在
+
+#### 一般 N 链接反向运动问题的数值解
+- 选择初始配置
+- 定义误差度量（例如，目标与当前位置之间距离的平方）
+- 计算误差梯度作为配置的函数
+- 应用梯度下降法（或牛顿法，或其他优化程序）
+
+
+#### 基于样式的 IK Style-Based IK
+
+## 绑定 Rigging
+### 绑定概念
+绑定是角色的一组高级控件，可以更快速、直观地修改姿势、变形、表情等
+
+#### 重要提示
+- 如同木偶上的线
+- 捕捉所有有意义的
+
+#### 角色变化
+- 因角色而异
+- 创建成本高昂
+- 需要手动操作
+- 需要艺术和技术培训
+
+
+### 混合形状 Blend Shapes
+不使用骨架，而是直接在表面之间进行插值
+
+例如，对一组面部表情进行建模：
+- 最简单的方案：对顶点位置进行线性组合
+- 样条曲线用于控制权重随时间的变化
+
+
+### 动作捕捉 Motion Capture
+数据驱动的动画序列创建方法
+- 记录真实世界的表现（例如，执行活动的人员）
+- 从收集的数据中提取随时间变化的姿势
+
+#### 动作捕捉的优缺点
+##### 优势
+- 能够快速捕获大量真实数据
+- 真实感较高
+##### 劣势
+- 设置复杂且成本高昂
+- 捕获的动画可能无法满足艺术需求，需要进行修改
+
+#### 动作捕捉设备 Motion Capture Equipment
+##### 光学 Optical
+- 拍摄对象上的标记
+- 通过多摄像头三角测量定位
+- 8 个以上摄像头，240 Hz，难以遮挡
+##### 磁力 Magnetic
+- 感知磁场以推断位置/方向
+- 束缚式
+
+##### ​机械 Mechanical
+- 直接测量关节角度
+- 限制运动
+
+
+#### 运动数据 Motion Data
+
+#### 面部动画的挑战 Challenges of Facial Animation
+恐怖谷效应
+- 在机器人和图形领域
+- 当人工智能角色的外观越来越接近人类的真实感时，我们的情绪反应就会变得负面，直到其在表达上达到足够令人信服的真实感水平
+
+
+#### 面部动作捕捉 Facial Motion Capture
+#### 生产流程 The Production Pipeline
 
 
 
