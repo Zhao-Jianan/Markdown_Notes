@@ -531,6 +531,7 @@ minor_axis - axis 2，它是每个数据帧(DataFrame)的列
 
 ## 基本数据操作
 ### 索引操作
+索引操作即数据查询操作
 #### 直接索引
 ```
 data["column_name"]["index_name"]
@@ -542,6 +543,8 @@ data = data.drop(["ma5","ma10","ma20","v_ma5","v_ma10","v_ma20"], axis=1) # 去�
 data["open"]["2018-02-26"] # 直接索引，先列后行
 ```
 #### 按名字索引
+data.loc
+根据行、列的标签值查询
 ```
 data.loc["index_name"]["column_name"] 
 data.loc["index_name", "column_name"] 
@@ -550,7 +553,24 @@ data.loc["index_name", "column_name"]
 data.loc["2018-02-26"]["open"] # 按名字索引
 data.loc["2018-02-26", "open"]
 ```
+
+##### 使用df.loc查询数据的方法
+1. 使用单个`label`值查询数据
+2. 使用值列表批量查询
+3. 使用数值区间进行范围查询
+4. 使用条件表达式查询
+```
+# 查询温度小于30度，大于21度，湿度大于50，小于70，累计雨量为0
+df.loc[(df['气温(度)'].astype(float) < 27) & (df['气温(度)'].astype(float) > 24) & (df['相对湿度(%)'] < 60) & (df['相对湿度(%)'] > 50) & (df['累积雨量(mm)'] < 0.1),:]
+```
+5. 调用函数查询
+```
+df.loc[lambda df : (df['气温(度)'].astype(float) < 27) & (df['气温(度)'].astype(float) > 24) & (df['相对湿度(%)'] < 60) & (df['相对湿度(%)'] > 50) & (df['累积雨量(mm)'] < 0.1)]
+```
+
 #### 按数字索引
+data.iloc
+根据行列的数字位置查询
 ```
 data.iloc[index_num, column_num]
 ```
@@ -704,9 +724,20 @@ data[:10].to_csv("test.csv", columns=["open"], index=False, mode="a", header=Fal
 # 保存opend列数据，index=False不要行索引，mode="a"追加模式|mode="w"重写，header=False不要列索引
 ```
 
+### Excel
+读取微软Excel文件,支持xls, xlsx, xlsm, xlsb, odf, ods和odt格式，存储到一个DataFrame中
+#### 读取 
+read_excel()
+
+```
+pandas.read_excel(io, sheet_name=0, *, header=0, names=None, index_col=None, usecols=None, dtype=None, engine=None, converters=None, true_values=None, false_values=None, skiprows=None, nrows=None, na_values=None, keep_default_na=True, na_filter=True, verbose=False, parse_dates=False, date_parser=<no_default>, date_format=None, thousands=None, decimal='.', comment=None, skipfooter=0, storage_options=None, dtype_backend=<no_default>, engine_kwargs=None)
+```
+
 ### HDF5
 HDF5 文件的读取和存储需要指定一个键，值为要存储的 ```DataFrame```
-#### 读取 ```read_hdf()```
+#### 读取 
+read_hdf()
+
 ```
 pandas.read_hdf(path_or_buf, key=None, **kwargs)
 ```
@@ -734,42 +765,71 @@ DataFrame.to_hdf(path_or_buf, key, **kwargs)
 ```
 
 ### JSON
-#### 读取 ```read_json()```
+#### 读取
+```read_json()```
 ```
 pandas.read_json(path_or_buf=None,orient=None,type="frame",lines=False)
 ```
 ##### 将 JSON 格式转换成默认的 Pandas DataFrame 格式
-##### ```orient```
+```orient```
 ```
 string,Indication of expected JSON string format
 ```
-- ###### ```'split'```
+```'split'```
 ```
 dict like {index -> [index], columns -> [columns], data -> [values]}
 ```
-- ###### 'records'
+'records'
 ```
 list like [{column -> value}, ..., {column -> value}]
 ```
-- ###### ```'index'```
+```'index'```
 ```
 dict like {index -> {column -> value}}
 ```
-- ###### ```'columns'```
+```'columns'```
 ```
 dict like {column -> {index -> value}}
 ```
 默认该格式
-- ###### ```'values'```
+```'values'```
 just the values array
 
-##### ```lines```
+```lines```
 boolean, default False
 ###### 按照每行读取 json 对象
-```typ```   
+```type```   
 default 'frame'，指定转换成的对象类型 series 或者 dataframe
 
 #### 保存 ```to_json()```
+
+### SQL
+将 SQL 查询或数据库表读入 DataFrame
+#### 读取
+read_sql()
+
+```
+pandas.read_sql(sql, con, index_col=None, coerce_float=True, params=None, parse_dates=None, columns=None, chunksize=None, dtype_backend=<no_default>, dtype=None)
+```
+
+例如
+```
+import pymysql
+conn = pymysql.connect(
+  host='127.0.0.1',
+  user='root',
+  password='123456',
+  database='my_database',
+  charset='utf-8'
+  )
+
+mysql_page = pandas.read_sql("SELECT * FROM users", conn) 
+```
+
+此函数是对 read_sql_table 和 read_sql_query 的便捷包装（用于向后兼容）。它将根据提供的输入委托给特定的函数。SQL 查询将被路由到 read_sql_query，而数据库表名称将被路由到 read_sql_table
+
+
+
 
 
 ## 缺失值处理
