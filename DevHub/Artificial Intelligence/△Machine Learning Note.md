@@ -58,6 +58,25 @@
 ##### 聚类
 k-means
 
+
+## 工业机器学习应用
+- 制造业 Manufacturing
+  - 预测性维护 Predictive maintenance
+  - 质量控制 quality control
+- 零售业 Retail
+  - 推荐Recommendation
+  - 聊天机器人chatbot
+  - 需求预测 demand forecasting
+- 医疗健康 Healthcare
+  - 实时患者数据 Alerts from real-time patient data
+  - 疾病识别警报 disease identification
+- 金融业 Finance
+  - 欺诈检测 Fraud detection
+  - 申请处理 application processing
+- 汽车业 Automobile
+  - 故障预测 Breakdown prediction
+  - 自动驾驶 self-driving
+
 ## 机器学习开发流程
 - 原始数据
 - 数据特征工程
@@ -67,7 +86,7 @@ k-means
   - 模型评估
     - 测试数据
   - 判断模型是否合格
-- 模型应用
+- 模型部署
 
 ## 机器学习步骤
 - 获取数据集
@@ -75,6 +94,130 @@ k-means
 - 特征⼯程
 - 机器学习
 - 模型评估
+
+
+## 机器学习阶段的挑战
+- 问题提出：聚焦最具影响力的行业问题
+- 数据：高质量数据稀缺，隐私问题
+- 训练模型：机器学习模型越来越复杂，数据量巨大，成本高昂
+- 部署模型：高计算量不适合实时推理
+- 监控：数据分布变化，公平性问题
+
+## 工业机器学习中的角色
+- 领域专家 Domain experts：拥有业务洞察力，了解哪些数据重要以及在哪里找到这些数据，并能识别机器学习模型的真正影响
+- 数据科学家 Data scientists：数据挖掘、模型训练和部署的全栈专家
+- 机器学习专家 ML experts：定制 SOTA 机器学习模型
+- 数据驱动开发 SDE：开发/维护数据管道、模型训练和服务管道
+
+How data scientists spent their time (source: Anaconda survey 2020)
+| 阶段                     | 百分比 |
+|--------------------------|--------|
+| 数据加载 (Data loading)      | 19%    |
+| 数据清洗 (Data cleaning)     | 26%    |
+| 数据可视化 (Data visualization) | 21%    |
+| 模型选择 (Model selection)   | 11%    |
+| 模型训练与评分 (Model training and scoring) | 12%    |
+| 模型部署 (Deploying models)  | 11%    |
+
+
+# 数据
+## 数据采集 Data Acquisition
+### 发现可用的数据
+- 识别现有数据集
+- 寻找基准数据集来评估新想法
+  - 例如，为新的超参数调优算法准备一组多样化的中小型数据集
+  - 例如，为大型深度神经网络准备大规模数据集
+
+### 热门机器学习数据集
+- MNIST：美国人口普查局员工编写的数字
+- ImageNet：来自图像搜索引擎的数百万张图片
+- AudioSet：用于声音分类的 YouTube 声音片段
+- LibriSpeech：来自有声读物的 1000 小时英语语音
+- Kinetics：用于人类行为分类的 YouTube 视频片段
+- KITTI：摄像头和其他传感器记录的交通场景
+- Amazon Review：客户评论和来自亚马逊在线购物的评论
+- SQuAD：来自维基百科的问答对
+
+### 在哪里可以找到数据集
+- Paperswithcodes 数据集：包含排行榜的学术数据集
+- Kaggle 数据集：数据科学家上传的机器学习数据集
+- Google 数据集搜索：在网络上搜索数据集
+- 各种工具包数据集：TensorFlow、HuggingFace
+- 各种会议/公司机器学习竞赛
+- AWS 上的开放数据：100 多个大规模原始数据
+- 您自己组织中的数据湖
+
+### 数据集对比
+| 数据类型       | 优点                             | 缺点                                         |
+|----------------|----------------------------------|----------------------------------------------|
+| 学术数据集（Academic datasets）     | 干净，难度适中                   | 选择有限，过于简化，通常规模较小             |
+| 竞赛数据集 （Competition datasets）    | 更接近真实的机器学习应用         | 仍然较为简化，且仅适用于热门话题             |
+| 原始数据 （Raw Data）      | 灵活性高                         | 需要大量精力来处理                           |
+
+
+- 在工业环境中，经常需要处理原始数据
+- 数据管理可能是一项涉及多个团队的大型工程。
+  处理流程、存储、法律问题、隐私……
+
+
+### 数据集成 Data Integration
+- 将来自多个来源的数据合并成一个连贯的数据集
+- 产品数据通常存储在多个表中
+  - 例如，房屋信息表、销售表、房源代理表
+- 通过使用键（通常是实体 ID）连接表
+- 关键问题：识别 ID、缺失行、冗余列、值冲突
+
+### 生成合成数据 Generate Synthetic Data
+数据增强是一种常见的做法
+数据合成正日益流行
+- 使用 GAN
+- 模拟
+- 数据增强
+
+
+## 网页抓取 Web Scraping
+- 目标是从网站中提取数据
+  - 噪声大、标签弱，可能包含垃圾数据
+  - 可大规模获取
+  - 例如，比价/追踪网站
+- 许多机器学习数据集是通过网页抓取获得的
+  - 例如，ImageNet、Kinetics
+- 网页爬取 VS 抓取
+  - 爬取：索引互联网上的整个页面
+  - 抓取：从网站的网页抓取特定数据
+
+### 工具
+- “curl” 经常失效
+  - 网站所有者使用各种方法来阻止机器人
+- 使用无头浏览器：一种没有 GUI 的 Web 浏览器
+- 需要大量新的 IP，并且很容易通过公有云获取
+  - 在所有 IPv4 IP 中，AWS 拥有 1.75%，Azure 拥有 0.55%，GCP 拥有 0.25%
+
+
+```
+from selenium import webdriver
+
+chrome_options = webdriver.ChromeOptions()
+chrome_options.headless = True
+chrome = webdriver.Chrome(
+  chrome_options=chrome_options)
+
+page = chrome.get(url)
+```
+
+### 法律考虑 Legal Considerations
+- 网页抓取本身并不违法
+- 但应该注意
+  - 请勿抓取包含敏感信息的数据（例如，涉及用户名/密码的私人数据、个人健康/医疗信息）
+  - 请勿抓取受版权保护的数据（例如，YouTube 视频、Flickr 照片）
+  - 遵守明确禁止网页抓取的服务条款
+- 如果您以营利为目的，请咨询律师
+
+### 注意事项
+- 当网站不提供数据 API 时，网页抓取是一种强大的大规模数据收集方式
+- 如果使用公有云，成本较低
+- 使用浏览器的检查工具查找 HTML 中的信息
+- 谨慎使用
 
 
 # 特征工程
