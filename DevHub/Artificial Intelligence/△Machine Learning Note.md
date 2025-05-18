@@ -681,9 +681,88 @@ $$
     - 从文本语料库（Unigram、WordPiece）中学习的自定义词汇
 
 
+## 特征工程 Feature Engineering
+### 特征工程概念
+- 在深度学习 (DL) 出现之前，特征工程 (FE) 对于使用机器学习模型至关重要
+  - 传统计算机视觉：检测角点/兴趣点
+- 深度学习训练深度神经网络自动提取特征
+  - 训练卷积神经网络 (CNN) 取代特征提取器
+  - 特征与最终任务更相关
+  - 局限性：数据量巨大，计算量大
+- 特征是与目标任务相关的原始数据的表示
+- 特征工程 VS 特征学习
+- 如有特征（图像/视频/音频/文本），则优先选择特征学习
 
 
-# 特征工程
+### 传统机器学习和深度学习区别
+- 传统机器学习： 手动提取的特征 --输入到--> 模型（例如 SVM）
+- 深度学习： 由神经网络学习的特征 --输入到--> Softmax 或 Regression等
+
+
+### 表格数据特征 Tabular Data Features
+- 表格数据采用表格形式，特征列为数字/分类/字符串类型
+- 整数/浮点数：直接使用 或 或 bin 转换为唯一的整数值
+- 分类数据：独热编码
+  - 将稀有类别映射到“Unknown”类别
+- 日期时间：特征列表，例如
+  - [year, month, day, day_of_year, week_of_year, day_of_week]
+- 特征组合：两组特征的笛卡尔积
+  - [cat, dog] x [male, female] -> [(cat, male), (cat, female), (dog, male), (dog, female)]
+
+### 文本特征 Text Features
+- 将文本表示为 token 特征
+  - 词袋 (Bag of words, BoW) 模型
+    - 局限性：需要精心设计词汇，会丢失单个单词的上下文信息
+  - 词向量 Word Embeddings（例如 Word2vec）：
+    - 将单词向量化，使相似的单词紧密排列
+    - 通过根据上下文单词预测目标单词进行训练
+- 预训练通用语言模型（例如通用句子编码器、BERT、GPT-3）
+  - 巨型 Transformer 模型
+  - 使用大量未标注数据进行训练
+  - 用途：文本嵌入；用于下游任务的微调
+
+### 图像/视频特征 Image/Video Features
+- 传统上，图像提取通常采用 SIFT 等手动特征提取方法
+- 现在，预训练的深度神经网络通常用作特征提取器
+  - ResNet：使用 ImageNet 进行训练（图像分类）
+  - I3D：使用 Kinetics 进行训练（动作分类）
+  - 提供多种现成的模型
+
+image --> Pre-trained CNN --> Image features --> Softmax regression
+
+## 数据处理总结
+### 要启动一个机器学习任务
+- 有没有足够的数据？ 
+  - 没有的话就去收集数据
+    - 在哪里找数据；
+    - 数据增强；
+    - 生成自己需要的数据；
+    - （以上方法都不可以可能这个任务不那么适合机器学习）
+- 对数据进行提升
+  - 标号？
+    - 提升标号：没有标号可以去标；标号里面有很多错误的话，要对它进行清理
+  - 数据质量？
+  - 模型？
+- 数据标注：
+  - 半监督学习；
+  - 有钱可以众包；
+  - 看看数据长什么样子，找其他的规则，从数据中提起有弱噪音的标号，也是可以用来训练模型的
+- 数据预处理：看看数据长什么样子；通常来说数据是有很多噪音的，要对数据清洗；将数据变成我们需要的格式；
+- 特征工程：上面的过程进行迭代的过程
+
+### 面临的挑战
+- 数据的质与量要做权衡
+- 数据质量
+  - 数据的多样性：产品所关心的方方面面都要考虑
+  - 无偏差：数据不能只是偏向于一个方面
+  - 公平性：不区别对待数据
+- 大数据的管理是一件很难的事情
+  - 存储
+  - 快速处理
+  - 版本控制
+  - 数据安全
+
+
 ## 数据集
 ### 可用数据集
 #### Kaggle
@@ -1171,6 +1250,41 @@ PCA.fit_transform(X)
 numpy array格式的数据[n_samples,n_features]
 - 返回值
 转换后指定维度的array
+
+
+
+
+# 机器学习模型 ML Model
+## 机器学习算法的类型
+- 监督学习 Supervised: 使用标记数据进行训练以预测标签
+  - 自监督学习 Self-supervised learning: 从数据生成标签。例如 word2vec、BERT
+- 半监督学习 Semi-supervised: 在标记和未标记数据上进行训练，使用模型推断未标记数据的标签
+  - E.g. self-training
+- 无监督学习 Unsupervised: 使用未标记数据进行训练
+  - E.g. clustering, density estimation
+  - GAN：从无标签数据生成带有简单标签的虚假数据
+- 强化学习 Reinforcement learning: 利用与环境互动的观察结果采取行动，最大化奖励
+
+**训练任务可能与模型的评估/使用方式不同**
+
+## 监督训练的组成部分
+- 模型 Model: 一个将输入映射到标签的参数化函数
+  - 模型参数 VS 超参数
+  - 例如，listing house --> sale price
+- 损失 Loss: 衡量模型在预测结果方面表现如何
+  - E.g. classification / regression / contrastive / triplet / ranking
+  - E.g. (predict_price - sale_price)^2
+- 目标 Objective: 优化模型参数的目标
+  - 例如最小化样本的损失总和
+- 优化 Optimization: 解决目标的算法
+
+## 监督模型的类型
+- 决策树 Decision trees: 使用树来做出决策
+- 线性模型 Linear methods: 根据输入特征的线性组合做出决策
+- 核方法 Kernel machines: 使用核函数计算特征相似度
+- 神经网络 Neural Networks: 使用神经网络学习特征表示
+
+
 
 
 # 分类算法
