@@ -1731,7 +1731,8 @@ Logistic回归不关心样本中类别的比例及类别下出现特征的概率
 
 
 
-## 决策树
+## 决策树 Decision Trees
+一种可解释的分类/回归模型
 ### 概念
 #### 决策树来源
 决策树思想的来源非常朴素，程序设计中的条件分支结构就是if-then结构，最早的决策树就是利用这类结构分割数据的一种分类学习方法
@@ -1740,6 +1741,23 @@ Logistic回归不关心样本中类别的比例及类别下出现特征的概率
 - 其中每个内部节点表示一个属性上的判断
 - 每个分支代表一个判断结果的输出
 - 最后每个叶节点代表一种分类结果
+
+#### 构建决策树
+- 采用自上而下的方法，从包含所有特征的根节点开始
+- 在每个父节点选择一个特征来分割样本
+  - 特征选择标准
+    - 对于连续目标，最大化方差减少
+    - 对于分类目标，最大化信息增益（1 - 熵）
+    - 对于分类目标，最大化信息增益
+
+
+
+$$
+\text{Gini impurity} = 1 - \sum_{i=1}^{n} p_i^2
+$$
+
+
+- 在每个节点上使用所有样本进行特征选择
 
 ### 决策树分类原理
 #### 熵
@@ -2003,8 +2021,22 @@ http://webgraphviz.com/
 ### 决策树优缺点
 #### 优点
 简单的理解和解释 ，树木可视化
+- 可解释
+- 无需预处理即可处理数值和分类特征
+- 易于训练和调优，广泛应用于工业界
+
 #### 缺点
 决策树学习者可以创建不能很好地推广数据的过于复杂的树,容易发生过拟合
+- 过于复杂的树会导致数据过度拟合
+  - 限制分裂层级数
+  - 修剪分支
+- 对数据敏感
+  - 更改少量样本可能会导致选择不同的特征，从而生成不同的树
+  - 随机森林
+- 计算上不易并行化
+
+
+
 #### 改进
 - 减枝cart算法
 - 随机森林（集成学习的一种）
@@ -2012,7 +2044,7 @@ http://webgraphviz.com/
 *企业重要决策，由于决策树很好的分析能力 ，在决策过程应用较多，可以选择特征*
 
 
-## 集成学习方法之随机森林
+## 集成学习方法之随机森林 Random Forest
 ### 集成学习方法
 集成学习通过建立几个模型组合的来解决单一预测问题。它的工作原理是生成多个分类器/模型，各自独立地学习和作出预测。这些预测最后结合成组合预测，因此优于任何一个单分类的做出预测
 #### Bagging集成原理
@@ -2022,8 +2054,19 @@ http://webgraphviz.com/
 
 ### 随机森林定义
 在机器学习中，随机森林是一个包含多个决策树的分类器，并且其输出的类别是由个别树输出的类别的众数而定
+- 训练多棵决策树以提高鲁棒性
+  - 决策树独立并行训练
+  - 分类采用多数投票，回归采用平均投票
+- 随机性从何而来？
+  - Bagging：随机抽取训练样本并进行替换
+    - 例如 [1,2,3,4,5] → [1,2,2,3,4]
+  - 随机选择特征子集
+
 
 **随机森林 = Bagging + 决策树**
+
+
+
 
 
 ### 随机森林原理
@@ -2081,7 +2124,7 @@ integer或None，可选（默认=无）树的最大深度 5,8,15,25,30
 
 
 # 回归算法
-## 线性回归
+## 线性回归 Linear Regression
 ### 线性回归应用场景
 - 房价预测
 - 销售额度预测
@@ -2105,6 +2148,34 @@ $$
 - 线性关系
 如果在单特征与目标值的关系呈直线关系，或者两个特征与目标值呈现平面的关系，即为线性关系
 - 非线性关系
+
+
+### 目标函数 Objective Function
+- 收集训练样本
+
+
+$$
+X = [x_1, x_2, \ldots, x_n]^T \in \mathbb{R}^{n \times p}
+$$
+
+
+标签是
+$$
+Y = [y_1, y_2, \ldots, y_n]^T \in \mathbb{R}^{n}
+$$
+
+
+- 例如：房屋清单和售价
+
+- 目标：最小化均方误差 (MSE)
+
+
+$$
+w^*, b^* = \arg\min_{w, b} \; \ell(X, y, w, b) 
+= \arg\min_{w, b} \; \frac{1}{n} \sum_{i=1}^{n} (y_i - \langle x_i, w \rangle - b)^2
+$$
+
+
 
 ### 线性回归的损失函数
 #### 损失函数公式
@@ -2212,6 +2283,23 @@ sklearn.metrics.mean_squared_error(y_true, y_pred)
 ##### SGD的缺点是
 -  SGD需要许多超参数：比如正则项参数、迭代数。
 -  SGD对于特征标准化是敏感的
+  
+#### 小批量随机梯度下降 Mini-batch Stochastic gradient descent
+- 通过小批量 SGD 进行训练
+  - W: 模型参数
+  - b: 批量大小
+  - η_t: t 时刻的学习率
+- 随机初始化 W_l
+- 重复 t = 1,2,... 直至收敛
+  - 随机采样 I_t ⊂ {1, ..., n}, |I_t| = b
+  - 更新
+
+
+$$
+w_{t+1} = w_t - \eta_t \nabla_{w_t} \, \ell(X_{I_t}, y_{I_t}, w_t)
+$$
+
+
 #### SAG--随机平均梯度法(Stochasitc Average Gradient)
 - 由于随机平均梯度法(Stochasitc Average Gradient)收敛的速度太慢，有人提出SAG等基于梯度下降的算法
 - Scikit-learn：SGDRegressor、岭回归、逻辑回归等当中都会有SAG优化
@@ -2304,8 +2392,9 @@ sklearn.linear_model.RidgeCV(_BaseRidgeCV, RegressorMixin)
 
 
 
-## 逻辑回归
+## 逻辑回归 Logistic Regression
 逻辑回归是解决二分类问题的利器
+**逻辑回归 = 线性回归 + sigmoid**
 ### 逻辑回归的原理
 #### 输入
 
@@ -2448,6 +2537,79 @@ sklearn.metrics.roc_auc_score(y_true, y_score)
 -  AUC非常适合评价样本不平衡中的分类器性能
 
 
+## Softmax回归 Softmax Regression
+Softmax回归 = 线性回归 + Softmax
+
+
+独热标签
+$$
+y = [y_1, y_2, \ldots, y_m], \quad
+y_i =
+\begin{cases}
+1, & \text{if } i = y \\
+0, & \text{otherwise}
+\end{cases}
+$$
+
+Softmax公式
+$$
+y = \text{softmax}(o), \quad \text{where} \quad y_i = \frac{\exp(o_i)}{\sum_{k=1}^{m} \exp(o_k)}
+$$
+
+- 将置信度分数转化为概率（非负，总和为 1）
+
+理想情况下，我们希望
+
+$$
+\hat{y} = \text{one\_hot} \left( \arg\max \, x_i o_i \right)
+$$
+
+softmax是该函数的连续近似值
+
+仍然是线性模型，根据输入的线性变换做出决策
+
+计算 y 和 y_hat 两个分布之间的交叉熵损失
+
+$$
+H(y, y) = -\sum_{i} y_i \log(y_i) = -\log y_y
+$$
+
+当标签类为 i 时，只要 o_j << o_i，则对 o_j 分配较少的惩罚
+
+
+使用小批量随机梯度下降（SGD）进行优化
+
+
+### 代码
+使用最小批量随机梯度下降 (SGD) 训练线性回归模型
+超参数
+- 批量大小
+- 学习率
+- 迭代次数
+
+```
+# `features` shape is (n, p), `labels` shape is (n, 1)
+def data_iter(batch_size, features, labels):
+  num_examples = len(features) 
+  indices = list(range(num_examples))
+  random.shuffle(indices) # read examples at random
+  for i in range(0, num_examples, batch_size):
+    batch_indices = torch.tensor(
+      indices[i:min(i + batch_size, num_examples)])
+    yield features[batch_indices], labels[batch_indices]
+    
+w = torch.normal(0, 0.01, size=(p, 1), requires_grad=True) 
+b = torch.zeros(1, requires_grad=True) 
+
+for epoch in range(num_epochs):
+  for X, y in data_iter(batch_size, features, labels):
+    y_hat = X @ w + b
+    loss = ((y_hat - y)**2 / 2).mean()
+    loss.backward()
+    for param in [w, b]:
+      param -= learning_rate * param.grad 
+      param.grad.zero_()
+```
 
 ## 模型保存和加载
 ### 保存和加载API

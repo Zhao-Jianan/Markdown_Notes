@@ -579,6 +579,7 @@ b 是批量大小,另一个重要的超参数
 内存消耗增加 浪费计算,例如如果所有样本都是相同的
 
 ## Softmax 回归
+Softmax 回归 = 线性回归 + Softmax
 ### 概念
 - Softmax 回归是一个多类分类模型 
 - 使用 Softmax 操作子得到每个类的预测置信度 
@@ -2881,26 +2882,279 @@ hello world <sep>
 - 对片段中的每个词元预测它是不是回答的开头或结束
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 # 优化算法
+## 优化问题
+一般形式
+
+$$
+\min_{x} \; f(x) \quad \text{subject to} \quad x \in \mathcal{C}
+$$
+
+目标函数
+
+$$
+f : \mathbb{R}^n \to \mathbb{R}
+$$
+
+限制集合例子
+
+$$
+\mathcal{C} = \{ x \mid h_1(x) = 0, \ldots, h_m(x) = 0, \; g_1(x) \leq 0, \ldots, g_r(x) \leq 0 \}
+$$
+
+如果
+
+$$
+\mathcal{C} = \mathbb{R}^n
+$$
+
+那就是不受限
+
+## 局部最小 vs 全局最小
+全局最小 x*
+
+$$
+f(x^*) \leq f(x), \quad \forall x \in \mathcal{C}
+$$
+
+局部最小 x*
+
+$$
+\exists \varepsilon > 0, \quad \text{s.t.} \quad f(x^*) \leq f(x), \quad \forall x : \| x - x^* \| \leq \varepsilon
+$$
+
+使用迭代优化算法来求解,—般只能保证界到局部最小值
+
+## 凸集和凸函数
+### 凸集
+一个 Rn的子集 C 
+
+$$
+\mathcal{C} \subseteq \mathbb{R}^n
+$$
+
+是凸集当且仅当
+
+$$
+\alpha x + (1 - \alpha) y \in \mathcal{C}, \quad \forall \alpha \in [0,1], \; \forall x,y \in \mathcal{C}
+$$
+
+
+### 凸函数
+函数
+
+$$
+f : \mathcal{C} \to \mathbb{R}
+$$
+
+是凸函数当且仅当
+
+$$
+f(\alpha x + (1 - \alpha) y) \leq \alpha f(x) + (1 - \alpha) f(y), \quad \forall \alpha \in [0,1], \; \forall x, y \in \mathcal{C}
+$$
+
+如果
+
+$$
+\quad \forall \alpha \in (0,1), \; \forall x \neq y \in \mathcal{C}
+$$
+
+时不等式严格成立, 那么叫严格凸函数
+
+#### 凸函数优化
+- 如果代价函数 f 是凸的,且限制集合 C 是凸的,那么就是凸优化问题,那么局部最小一定是全局最小 
+- 严格凸优化问题有唯一的全局最小
+
+### 凸和非凸例子
+#### 凸
+- 线性回归
+
+
+$$
+f(x) = \|Wx - b\|^2
+$$
+
+
+- Softmax 回归
+
+#### 非凸
+深度学习模型大多是非凸
+MLP, CNN, RNN, attention, …
+
+
+## 梯度下降 Gradient Descent
+最简单的迭代求解算法 
+
+选取开始点 X_0
+
+对于
+
+$$
+t = 1, \ldots, T \\
+x_t = x_{t-1} - \eta \nabla f(x_{t-1})
+$$
+
+η 叫做学习率
+
+
+### 随机梯度下降 Stochastic gradient descent (SGD)
+有 n 个样本时,计算
+
+$$
+f(x) = \frac{1}{n} \sum_{i=1}^{n} \ell_i(x)
+$$
+
+的导数太贵
+
+
+随机梯度下降在时间 t 随机选项样本 t_i 来近似 f(x)
+
+$$
+x_t = x_{t-1} - \eta_t \nabla \ell_{i_t}(x_{t-1})
+$$
+
+$$
+\mathbb{E} \left[ \nabla \ell_{i_t}(x) \right] = \mathbb{E} \left[ \nabla f(x) \right]
+$$
+
+
+### 小批量随机梯度下降 Mini-batch Stochastic gradient descent
+计算单样本的梯度难完全利用硬件资源
+
+小批量随机梯度下降是最常用的优化算法
+
+小批量随机梯度下降在时间 t 采样一个随机子集 I_t ⊂ {1, ..., n}, 使得 |I_t| = b
+
+$$
+x_t = x_{t-1} - \frac{\eta}{b} \sum_{i \in I_t} \nabla \ell_i(x_{t-1})
+$$
+
+
+同样,这是一个无偏的近似,但降低了方差
+
+$$
+\mathbb{E} \left[ \frac{1}{b} \sum_{i \in I_t} \nabla \ell_i(x) \right] = \nabla f(x)
+$$
+
+
+## 冲量法
+冲量法使用平滑过渡梯度对权重更新
+冲量对梯度做平滑
+
+
+$$
+g_t = \frac{1}{b} \sum_{i \in I_t} \nabla \ell_i(x_{t-1})
+$$
+
+
+$$
+v_t = \beta v_{t-1} + g_t
+$$
+
+
+$$
+w_t = w_{t-1} - \eta v_t
+$$
+
+梯度平滑
+
+$$
+v_t = g_t + \beta g_{t-1} + \beta^2 g_{t-2} + \beta^3 g_{t-3} + \cdots
+$$
+
+
+常见的动量系数取值为：
+$$
+\beta \in \{0.5,\, 0.9,\, 0.95,\, 0.99\}
+$$
+
+## Adam
+Adam对梯度做平滑,且对梯度各个维度值做重新调整
+
+
+记录
+
+$$
+v_t = \beta_1 v_{t-1} + (1 - \beta_1) g_t
+$$
+
+
+通常
+
+$$
+\beta_1 = 0.9
+$$
+
+展开
+
+$$
+v_t = (1 - \beta_1) \left( g_t + \beta_1 g_{t-1} + \beta_1^2 g_{t-2} + \beta_1^3 g_{t-3} + \cdots \right)
+$$
+
+因为
+
+$$
+\sum_{i=0}^\infty \beta_1^i = \frac{1}{1 - \beta_1}
+$$
+
+所以权重和为1
+
+
+由于
+
+$$
+v_0 = 0
+$$
+
+且
+
+$$
+\sum_{i=0}^t \beta_1^t = \frac{1 - \beta_1^{t}}{1 - \beta_1}
+$$
+
+修正
+
+$$
+\hat{v}_t = \frac{v_t}{1 - \beta_1^t}
+$$
+
+
+
+类似记录
+
+$$
+s_t = \beta_2 s_{t-1} + (1 - \beta_2) g_t^2
+$$
+
+通常
+
+$$
+\beta_2 = 0.999
+$$
+
+且修正
+
+$$
+\hat{s}_t = \frac{s_t}{1 - \beta_2^t}
+$$
+
+计算重新调整后的梯度
+
+$$
+g'_t = \frac{\hat{v}_t}{\sqrt{\hat{s}_t} + \epsilon}
+$$
+
+最后更新
+
+$$
+w_t = w_{t-1} - \eta g'_t
+$$
+
+
+
+
+
+
 
 
 
